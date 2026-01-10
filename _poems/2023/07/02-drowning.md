@@ -1,7 +1,7 @@
 ---
 title: "Drowning."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Clever leaves kneel down... 

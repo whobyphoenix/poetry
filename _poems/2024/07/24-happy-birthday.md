@@ -1,7 +1,7 @@
 ---
 title: "С днём рожденья!"
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 Давайте, я просто подслушаю, что ей сказать?

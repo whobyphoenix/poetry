@@ -1,7 +1,7 @@
 ---
 title: "Rarities."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 It's funny, how many 

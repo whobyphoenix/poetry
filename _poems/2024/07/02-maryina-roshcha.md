@@ -1,7 +1,7 @@
 ---
 title: "Марьина Роща."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 В доме семнадцать пятьдесят два

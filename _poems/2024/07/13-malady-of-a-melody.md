@@ -1,7 +1,7 @@
 ---
 title: "Malady of a melody."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 Spontaneous rhyming,

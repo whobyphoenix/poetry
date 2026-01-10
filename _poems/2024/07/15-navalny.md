@@ -1,7 +1,7 @@
 ---
 title: "Навальный."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 Дождь поёт вам колыбельную,

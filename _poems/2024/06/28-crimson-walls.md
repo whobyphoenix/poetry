@@ -1,7 +1,7 @@
 ---
 title: "Carthage crimson."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Алые стены

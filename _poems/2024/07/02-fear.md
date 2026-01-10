@@ -1,7 +1,7 @@
 ---
 title: "Just another word for ignorance."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Так много людей, кто как дети -

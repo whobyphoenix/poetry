@@ -1,7 +1,7 @@
 ---
 title: "Иное."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Лица, лица и кресты,

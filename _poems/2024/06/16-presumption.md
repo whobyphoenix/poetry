@@ -1,7 +1,7 @@
 ---
 title: "Maybe it isn't a presumption after all?"
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Affirms your goal,

@@ -1,7 +1,7 @@
 ---
 title: "Gifts."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Two lucky clovers today,

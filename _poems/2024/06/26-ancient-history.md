@@ -1,7 +1,7 @@
 ---
 title: "Ancient history."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Neptune is a thief:

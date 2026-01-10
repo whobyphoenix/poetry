@@ -1,7 +1,7 @@
 ---
 title: "Boyo."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 I'm a child of math,

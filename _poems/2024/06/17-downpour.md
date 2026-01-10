@@ -1,7 +1,7 @@
 ---
 title: "Лужами сжатый жулик."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Стаккато из пузырей

@@ -1,7 +1,7 @@
 ---
 title: "Mr. Lonesome Crane."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 У Господина Одинокого Журавля

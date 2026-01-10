@@ -1,7 +1,7 @@
 ---
 title: "Путаница Эдгара."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Ураганом погнуло ограды,

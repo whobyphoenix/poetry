@@ -1,7 +1,7 @@
 ---
 title: "What's the probability of meeting a dinosaur?"
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 I claim it's exactly zero, because

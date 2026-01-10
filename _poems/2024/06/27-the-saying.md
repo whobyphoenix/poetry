@@ -1,7 +1,7 @@
 ---
 title: "The saying."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Don't try their patience,

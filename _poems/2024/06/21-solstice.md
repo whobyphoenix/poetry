@@ -1,7 +1,7 @@
 ---
 title: "Solstice."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Точнее всего

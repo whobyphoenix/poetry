@@ -1,7 +1,7 @@
 ---
 title: "The cardinal sin."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 It's captivating to observe

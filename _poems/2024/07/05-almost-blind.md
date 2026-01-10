@@ -1,7 +1,7 @@
 ---
 title: "Почти слепая."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Теперь я понимаю смысл исповеди -

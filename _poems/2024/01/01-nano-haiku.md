@@ -1,7 +1,7 @@
 ---
 title: "Nano-haiku."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 and if it's rude

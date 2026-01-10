@@ -1,7 +1,7 @@
 ---
 title: "Москва-река."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 На фоне закатной реки

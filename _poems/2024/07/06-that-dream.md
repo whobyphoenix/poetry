@@ -1,7 +1,7 @@
 ---
 title: "Тот самый сон."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Вот так и бегут по колено в ледяной жидкости,

@@ -1,7 +1,7 @@
 ---
 title: "В тот вечер так резко вдруг похолодало."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 То ли настигают фары скутера,

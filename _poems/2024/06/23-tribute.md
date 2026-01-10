@@ -1,7 +1,7 @@
 ---
 title: "Это не плагиат, это tribute."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Апостол Павел, Апостол Фома -

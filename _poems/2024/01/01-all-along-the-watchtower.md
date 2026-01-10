@@ -1,7 +1,7 @@
 ---
 title: "All along the watchtower."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 - Ну должен же выход быть, -

@@ -1,7 +1,7 @@
 ---
 title: "My beloved,"
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 Between you and harm, I place

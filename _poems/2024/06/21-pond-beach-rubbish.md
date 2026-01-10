@@ -1,7 +1,7 @@
 ---
 title: "Когда б вы знали из какого сора."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Озёрный пляж сжался до дециметра:

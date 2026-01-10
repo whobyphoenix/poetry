@@ -1,7 +1,7 @@
 ---
 title: "Оригинал в Аэростате '675 - Протест красотой' от 22 апреля 2018."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Люди верят, что света нет,

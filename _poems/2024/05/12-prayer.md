@@ -1,7 +1,7 @@
 ---
 title: "Молитва Далай-Ламы."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Пока пространство длится,

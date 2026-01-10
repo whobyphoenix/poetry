@@ -1,7 +1,7 @@
 ---
 title: "Clarity."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Twinkling notes fall down...

@@ -1,7 +1,7 @@
 ---
 title: "Grow up, pt. 2. Abdication."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 "Doesn't mean that laws

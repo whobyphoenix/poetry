@@ -1,7 +1,7 @@
 ---
 title: "Первая попытка перевести Есенинского 'Чёрного Человека'."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 My dear, oh so dear friend, 

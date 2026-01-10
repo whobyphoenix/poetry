@@ -1,7 +1,7 @@
 ---
 title: "Grow up, pt. 1. Redemption."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 Have I killed? No,

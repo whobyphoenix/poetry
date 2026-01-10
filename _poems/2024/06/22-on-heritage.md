@@ -1,7 +1,7 @@
 ---
 title: "On heritage."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 My grandma was a witch: she claimed

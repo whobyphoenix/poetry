@@ -1,7 +1,7 @@
 ---
 title: "Something from Shakespeare."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 It's not your fault

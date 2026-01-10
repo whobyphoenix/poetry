@@ -1,7 +1,7 @@
 ---
 title: "Quadrivium."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 It's a real pickle, say I,

@@ -1,7 +1,7 @@
 ---
 title: "Azkaban for heroes."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 The little boy lost,

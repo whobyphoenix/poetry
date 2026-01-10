@@ -1,7 +1,7 @@
 ---
 title: "Для горшка с петунией."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 Радуга звучит,

@@ -1,7 +1,7 @@
 ---
 title: "Не родна."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Вокруг снова осень,

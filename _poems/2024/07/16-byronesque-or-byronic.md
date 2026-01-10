@@ -1,7 +1,7 @@
 ---
 title: "Byronesque or byronic?"
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 God is a poli!

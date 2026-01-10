@@ -1,7 +1,7 @@
 ---
 title: "Consequences."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 The truth points to itself.

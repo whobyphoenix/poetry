@@ -1,7 +1,7 @@
 ---
 title: "My favourite fable."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 It's about this teacher, 

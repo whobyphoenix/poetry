@@ -1,7 +1,7 @@
 ---
 title: "Fathomless."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Ум - это жажда.

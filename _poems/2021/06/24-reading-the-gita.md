@@ -1,7 +1,7 @@
 ---
 title: "Reading the Gita."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Читаю Гиту...

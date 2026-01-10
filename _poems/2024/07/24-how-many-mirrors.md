@@ -1,7 +1,7 @@
 ---
 title: "Сколько нужно зеркал, чтобы восемь раз преломить свет?"
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 Аштавакре следовало быть повежливей,

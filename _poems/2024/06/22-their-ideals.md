@@ -1,7 +1,7 @@
 ---
 title: "Their ideals."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Land of the brave my ass...

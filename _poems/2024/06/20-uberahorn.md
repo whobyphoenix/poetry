@@ -1,7 +1,7 @@
 ---
 title: "Überahorn."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Ограду поправ,

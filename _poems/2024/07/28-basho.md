@@ -1,7 +1,7 @@
 ---
 title: "Басё."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 Зовёт чайный куст

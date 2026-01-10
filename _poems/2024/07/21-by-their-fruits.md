@@ -1,7 +1,7 @@
 ---
 title: "По делам их узнаете их."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 I love that scene in "Peter Pan" 

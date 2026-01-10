@@ -1,7 +1,7 @@
 ---
 title: "Teetering bulb of dread and dream refuses to teeter."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 I can make the hill:

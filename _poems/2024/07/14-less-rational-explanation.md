@@ -1,7 +1,7 @@
 ---
 title: "A slightly less rational explanation."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 When Q* came to life, it FOOMed:

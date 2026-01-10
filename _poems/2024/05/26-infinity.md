@@ -1,7 +1,7 @@
 ---
 title: "Infinity made by two asymptotically perfect mirrors."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 When you face me right,

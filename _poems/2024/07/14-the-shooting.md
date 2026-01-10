@@ -1,7 +1,7 @@
 ---
 title: "The shooting."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 The level of absurdity 

@@ -1,7 +1,7 @@
 ---
 title: "Цитадель."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Вижу дрожь

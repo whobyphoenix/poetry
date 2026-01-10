@@ -1,7 +1,7 @@
 ---
 title: "Разбирая репертуары театров."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Наверное для баланса

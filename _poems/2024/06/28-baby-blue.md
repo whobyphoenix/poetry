@@ -1,7 +1,7 @@
 ---
 title: "Baby Blue."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Your chances are slim,

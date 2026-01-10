@@ -1,7 +1,7 @@
 ---
 title: "Something human."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 The benevolent Universe

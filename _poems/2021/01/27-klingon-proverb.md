@@ -1,7 +1,7 @@
 ---
 title: "The Klingon proverb."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Тысячи глОток

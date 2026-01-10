@@ -1,6 +1,6 @@
 ---
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 How about You do as you preach?

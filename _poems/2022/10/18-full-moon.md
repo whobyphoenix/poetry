@@ -1,7 +1,7 @@
 ---
 title: "Полнолуние."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Вижу тот же сон.

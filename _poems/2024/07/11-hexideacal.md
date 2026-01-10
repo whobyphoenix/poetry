@@ -1,7 +1,7 @@
 ---
 title: "Definitely a hexideacal one."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Easy to stay home

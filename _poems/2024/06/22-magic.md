@@ -1,7 +1,7 @@
 ---
 title: "Magic."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 It's not about

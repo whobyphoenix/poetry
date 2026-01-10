@@ -1,7 +1,7 @@
 ---
 title: "The rainbow."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 So...

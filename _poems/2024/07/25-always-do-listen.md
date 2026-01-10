@@ -1,7 +1,7 @@
 ---
 title: "Spirits never lie. Almost never."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 That thing 

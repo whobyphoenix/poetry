@@ -1,7 +1,7 @@
 ---
 title: "Just another Eels' song for the Time."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 And all eyes ask:

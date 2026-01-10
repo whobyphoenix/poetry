@@ -1,7 +1,7 @@
 ---
 title: "Ineffable."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 I still do not get

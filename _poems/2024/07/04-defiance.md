@@ -1,7 +1,7 @@
 ---
 title: "Или плохой перевод."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Лгал

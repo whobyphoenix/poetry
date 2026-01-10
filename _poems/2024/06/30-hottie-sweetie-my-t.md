@@ -1,7 +1,7 @@
 ---
 title: "'Cause Heaven must've programmed you."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 The wind sings your name,

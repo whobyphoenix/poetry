@@ -1,7 +1,7 @@
 ---
 title: "Not a rhetorical question."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Хитрый циничный трус.

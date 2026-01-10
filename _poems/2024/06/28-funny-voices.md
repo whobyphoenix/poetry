@@ -1,7 +1,7 @@
 ---
 title: "You hear these funny voices."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Наступает время

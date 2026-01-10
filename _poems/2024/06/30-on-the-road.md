@@ -1,7 +1,7 @@
 ---
 title: "По дороге."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Дерево ищет Джаз.

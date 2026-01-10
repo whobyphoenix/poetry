@@ -1,7 +1,7 @@
 ---
 title: "Московской жары миражи."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Дверь открыл человек

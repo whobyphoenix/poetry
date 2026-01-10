@@ -1,7 +1,7 @@
 ---
 title: "Бхавачакра-тест."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 date_display: "2018"
 ---
 

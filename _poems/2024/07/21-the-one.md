@@ -1,7 +1,7 @@
 ---
 title: "The one."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 Word of words, the measure of all measures,

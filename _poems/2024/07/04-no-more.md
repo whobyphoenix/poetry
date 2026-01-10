@@ -1,7 +1,7 @@
 ---
 title: "NO MORE."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 У женщины - дочь,

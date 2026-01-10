@@ -1,7 +1,7 @@
 ---
 title: "My origins."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Она возвращалась на электричке

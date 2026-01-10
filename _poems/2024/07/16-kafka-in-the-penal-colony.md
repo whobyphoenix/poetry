@@ -1,7 +1,7 @@
 ---
 title: "Вру я, вправе ли, но я не могу быть спокойней."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 Старый комендант придумал презабавно:

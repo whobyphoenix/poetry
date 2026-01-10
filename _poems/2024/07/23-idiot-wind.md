@@ -1,7 +1,7 @@
 ---
 title: "Idiot wind."
 authors: phoenix
-book: flashlight-in-the-dark
+books: flashlight-in-the-dark
 ---
 
 In their sweet dreams

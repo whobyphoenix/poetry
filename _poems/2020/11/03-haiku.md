@@ -1,6 +1,6 @@
 ---
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 ---
 
 Вавилон можно

@@ -1,7 +1,7 @@
 ---
 title: "Удивительный факт."
 authors: phoenix
-book: drowning-admiration
+books: drowning-admiration
 date_display: "2018"
 ---
 
