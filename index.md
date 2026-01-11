@@ -44,8 +44,8 @@ layout: default
         {% for author_id in author_list %}
           {% assign author_id_stripped = author_id | strip %}
           {% assign author = site.authors | where_exp: "a", "a.path contains author_id_stripped" | first %}
-          {% if author and author.url %}
-            <a href="{{ author.url }}">{{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
+          {% if author and author.link %}
+            <a href="{{ author.link }}">{{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
           {% elsif author %}
             {{ author.name }}{% unless forloop.last %}, {% endunless %}
           {% else %}

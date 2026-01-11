@@ -9,7 +9,7 @@ layout: default
   <header class="book-header">
     <h1>{{ page.title }}</h1>
     {% if book_author %}
-    <p class="book-author">by {% if book_author.url %}<a href="{{ book_author.url }}">{{ book_author.name }}</a>{% else %}{{ book_author.name }}{% endif %}</p>
+    <p class="book-author">by {% if book_author.link %}<a href="{{ book_author.link }}">{{ book_author.name }}</a>{% else %}{{ book_author.name }}{% endif %}</p>
     {% endif %}
     {% if page.description %}
     <p class="book-description">{{ page.description }}</p>
@@ -62,7 +62,7 @@ layout: default
             {% if poem_has_book_author and collaborators.size > 0 %}
               <span class="collab">In collaboration with 
                 {% for author in collaborators %}
-                  {% if author.url %}<a href="{{ author.url }}">{{ author.name }}</a>{% else %}{{ author.name }}{% endif %}{% unless forloop.last %}, {% endunless %}
+                  {% if author.link %}<a href="{{ author.link }}">{{ author.name }}</a>{% else %}{{ author.name }}{% endif %}{% unless forloop.last %}, {% endunless %}
                 {% endfor %}
               </span>
             {% elsif poem_has_book_author == false %}
@@ -70,8 +70,8 @@ layout: default
                 {% for author_id in author_list %}
                   {% assign author_id_stripped = author_id | strip %}
                   {% assign author = site.authors | where_exp: "a", "a.path contains author_id_stripped" | first %}
-                  {% if author and author.url %}
-                    <a href="{{ author.url }}">{{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
+                  {% if author and author.link %}
+                    <a href="{{ author.link }}">{{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
                   {% elsif author %}
                     {{ author.name }}{% unless forloop.last %}, {% endunless %}
                   {% else %}
