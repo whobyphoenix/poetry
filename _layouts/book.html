@@ -2,9 +2,15 @@
 layout: default
 ---
 {% assign book_name = page.path | split: '/' | last | split: '.' | first %}
+{% assign book_author_id = page.author | default: "" %}
+{% assign book_author = site.authors | where_exp: "a", "a.path contains book_author_id" | first %}
+
 <article class="book">
   <header class="book-header">
     <h1>{{ page.title }}</h1>
+    {% if book_author %}
+    <p class="book-author">by {% if book_author.url %}<a href="{{ book_author.url }}">{{ book_author.name }}</a>{% else %}{{ book_author.name }}{% endif %}</p>
+    {% endif %}
     {% if page.description %}
     <p class="book-description">{{ page.description }}</p>
     {% endif %}
@@ -38,21 +44,42 @@ layout: default
             {{ day | plus: 0 }}, {{ year }}
           </time>
           {% endif %}
-          {% if poem.authors %}
-          <span class="authors">
+          {% if poem.authors and book_author_id != "" %}
             {% assign author_list = poem.authors | split: ', ' %}
+            {% assign poem_has_book_author = false %}
+            {% assign collaborators = "" | split: "" %}
             {% for author_id in author_list %}
               {% assign author_id_stripped = author_id | strip %}
-              {% assign author = site.authors | where_exp: "a", "a.path contains author_id_stripped" | first %}
-              {% if author and author.url %}
-                <a href="{{ author.url }}">{{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
-              {% elsif author %}
-                {{ author.name }}{% unless forloop.last %}, {% endunless %}
+              {% if author_id_stripped == book_author_id %}
+                {% assign poem_has_book_author = true %}
               {% else %}
-                {{ author_id_stripped }}{% unless forloop.last %}, {% endunless %}
+                {% assign author = site.authors | where_exp: "a", "a.path contains author_id_stripped" | first %}
+                {% if author %}
+                  {% assign collaborators = collaborators | push: author %}
+                {% endif %}
               {% endif %}
             {% endfor %}
-          </span>
+            {% if poem_has_book_author and collaborators.size > 0 %}
+              <span class="collab">In collaboration with 
+                {% for author in collaborators %}
+                  {% if author.url %}<a href="{{ author.url }}">{{ author.name }}</a>{% else %}{{ author.name }}{% endif %}{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+              </span>
+            {% elsif poem_has_book_author == false %}
+              <span class="authors">
+                {% for author_id in author_list %}
+                  {% assign author_id_stripped = author_id | strip %}
+                  {% assign author = site.authors | where_exp: "a", "a.path contains author_id_stripped" | first %}
+                  {% if author and author.url %}
+                    <a href="{{ author.url }}">{{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
+                  {% elsif author %}
+                    {{ author.name }}{% unless forloop.last %}, {% endunless %}
+                  {% else %}
+                    {{ author_id_stripped }}{% unless forloop.last %}, {% endunless %}
+                  {% endif %}
+                {% endfor %}
+              </span>
+            {% endif %}
           {% endif %}
         </div>
       </header>

@@ -91,6 +91,18 @@ h2.poem-title {
   color: var(--accent);
 }
 
+.poem-meta .collab {
+  font-style: italic;
+}
+
+.poem-meta .collab a {
+  color: var(--text-light);
+}
+
+.poem-meta .collab a:hover {
+  color: var(--accent);
+}
+
 .poem-body {
   white-space: pre-wrap;
   font-size: 1.05rem;
@@ -114,7 +126,21 @@ h2.poem-title {
 .book-header h1 {
   font-size: 1.5rem;
   font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.book-author {
+  font-size: 1rem;
+  color: var(--text-light);
   margin-bottom: 0.5rem;
+}
+
+.book-author a {
+  color: var(--text-light);
+}
+
+.book-author a:hover {
+  color: var(--accent);
 }
 
 .book-description {

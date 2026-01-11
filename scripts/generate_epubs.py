@@ -106,7 +106,8 @@ def get_book_metadata():
             name = book_file.stem  # filename without extension
             books[name] = {
                 'title': meta.get('title', name),
-                'description': meta.get('description', '')
+                'description': meta.get('description', ''),
+                'author': meta.get('author', '')
             }
     
     return books
@@ -143,6 +144,15 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
     """Generate an epub file for a book."""
     title = book_meta.get('title', book_name)
     description = book_meta.get('description', '')
+    book_author_id = book_meta.get('author', '')
+    
+    # Get book author display name
+    if book_author_id and book_author_id in author_meta:
+        book_author_name = author_meta[book_author_id]['name']
+    elif book_author_id:
+        book_author_name = book_author_id
+    else:
+        book_author_name = ''
     
     # Sort poems by date
     poems = sorted(poems, key=lambda p: p['date'])
@@ -156,23 +166,48 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
     for poem in poems:
         lines.append(f"\n## {poem['title']}\n")
         
-        # Author attribution and date
-        author_names = []
-        for a in poem['authors']:
-            if a in author_meta:
-                author_names.append(author_meta[a]['name'])
-            else:
-                author_names.append(a)
-        
         # Use date_display if set, otherwise format the date
         if poem['date_display']:
             date_display = poem['date_display']
         else:
             date_display = format_date(poem['date'])
-        if date_display:
-            lines.append(f"*{', '.join(author_names)} — {date_display}*\n")
+        
+        # Author attribution logic
+        poem_authors = poem['authors']
+        poem_has_book_author = book_author_id in poem_authors
+        other_authors = [a for a in poem_authors if a != book_author_id]
+        
+        # Get display names for other authors
+        other_author_names = []
+        for a in other_authors:
+            if a in author_meta:
+                other_author_names.append(author_meta[a]['name'])
+            else:
+                other_author_names.append(a)
+        
+        if poem_has_book_author and other_author_names:
+            # Collaboration
+            attribution = f"In collaboration with {', '.join(other_author_names)}"
+        elif poem_has_book_author:
+            # Only book author, no attribution needed
+            attribution = ""
         else:
-            lines.append(f"*{', '.join(author_names)}*\n")
+            # External authors (republished work)
+            all_author_names = []
+            for a in poem_authors:
+                if a in author_meta:
+                    all_author_names.append(author_meta[a]['name'])
+                else:
+                    all_author_names.append(a)
+            attribution = ', '.join(all_author_names)
+        
+        # Combine attribution and date
+        if attribution and date_display:
+            lines.append(f"*{attribution} — {date_display}*\n")
+        elif attribution:
+            lines.append(f"*{attribution}*\n")
+        elif date_display:
+            lines.append(f"*{date_display}*\n")
         
         lines.append(f"\n{poem['body']}\n")
         lines.append("\n---\n")
@@ -188,13 +223,17 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / f'{book_name}.epub'
     
-    result = subprocess.run([
+    cmd = [
         'pandoc', str(temp_file),
         '-o', str(output_file),
         '--metadata', f'title={title}',
         '--toc',
         '--toc-depth=1'
-    ], capture_output=True, text=True)
+    ]
+    if book_author_name:
+        cmd.extend(['--metadata', f'author={book_author_name}'])
+    
+    result = subprocess.run(cmd, capture_output=True, text=True)
     
     if result.returncode != 0:
         print(f"Error generating {book_name}.epub: {result.stderr}")
