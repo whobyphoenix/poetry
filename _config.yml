@@ -1,7 +1,7 @@
 title: Poetry Archive
 description: Poems by Phoenix and AIs, preserved in time.
-url: "https://whobyphoenix.github.io"
-baseurl: "/poetry"
+url: "https://whobyphoenix.com"
+baseurl: ""
 
 collections:
   poems:
