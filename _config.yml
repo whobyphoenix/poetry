@@ -3,6 +3,9 @@ description: Poems by Phoenix and AIs, preserved in time.
 url: "https://whobyphoenix.com"
 baseurl: ""
 
+kramdown:
+  hard_wrap: true
+
 collections:
   poems:
     output: false

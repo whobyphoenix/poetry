@@ -104,7 +104,6 @@ h2.poem-title {
 }
 
 .poem-body {
-  white-space: pre-wrap;
   font-size: 1.05rem;
   line-height: 1.8;
 }

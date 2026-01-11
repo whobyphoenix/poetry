@@ -58,7 +58,7 @@ layout: default
   </header>
   
   <div class="poem-body">
-{{ latest.content | newline_to_br }}
+{{ latest.content }}
   </div>
   
   {% assign has_books = latest.books | default: latest.book | default: "" %}
