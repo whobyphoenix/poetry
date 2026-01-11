@@ -85,7 +85,7 @@ layout: default
       </header>
       
       <div class="poem-body">
-{{ poem.content }}
+{{ poem.content | newline_to_br }}
       </div>
     </section>
     {% endfor %}

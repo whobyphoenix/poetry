@@ -209,7 +209,10 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
         elif date_display:
             lines.append(f"*{date_display}*\n")
         
-        lines.append(f"\n{poem['body']}\n")
+        # Preserve line breaks by adding two trailing spaces (Markdown hard break)
+        poem_body = '\n'.join(line + '  ' for line in poem['body'].split('\n'))
+        
+        lines.append(f"\n{poem_body}\n")
         lines.append("\n---\n")
     
     combined = '\n'.join(lines)
