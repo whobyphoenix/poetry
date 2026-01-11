@@ -1,0 +1,25 @@
+title: Poetry Archive
+description: Poems by Phoenix and AIs, preserved in time.
+url: "https://whobyphoenix.github.com"
+
+collections:
+  poems:
+    output: false
+  authors:
+    output: false
+  books:
+    output: true
+    permalink: /books/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "books"
+    values:
+      layout: "book"
+
+exclude:
+  - scripts/
+  - Gemfile
+  - Gemfile.lock
+  - README.md

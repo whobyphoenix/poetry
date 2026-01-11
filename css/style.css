@@ -1,0 +1,208 @@
+:root {
+  --text: #2c2c2c;
+  --text-light: #666;
+  --bg: #faf9f7;
+  --accent: #4a6274;
+  --border: #e5e3df;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Navigation */
+.site-nav {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* Main content */
+main {
+  flex: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  width: 100%;
+}
+
+/* Poem styles */
+.poem, .book-poem {
+  margin-bottom: 3rem;
+}
+
+.poem-header {
+  margin-bottom: 1.5rem;
+}
+
+.poem-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+h2.poem-title {
+  font-size: 1.2rem;
+}
+
+.poem-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.poem-meta time::after {
+  content: " · ";
+}
+
+.poem-meta .authors a {
+  color: var(--text-light);
+}
+
+.poem-meta .authors a:hover {
+  color: var(--accent);
+}
+
+.poem-body {
+  white-space: pre-wrap;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.poem-footer {
+  margin-top: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* Book page header */
+.book-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.book-header h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.book-description {
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.download-button {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+/* Book poems list */
+.book-poems {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.book-poem {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.book-poem:last-child {
+  border-bottom: none;
+}
+
+/* Books section on homepage */
+.books-section {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.books-section h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.books-list {
+  list-style: none;
+}
+
+.books-list li {
+  padding: 0.5rem 0;
+}
+
+.books-list .download-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-left: 0.75rem;
+}
+
+.books-list .download-link:hover {
+  color: var(--accent);
+}
+
+/* Footer */
+footer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  main {
+    padding: 2rem 1.25rem;
+  }
+  
+  .poem-meta {
+    display: block;
+  }
+  
+  .poem-meta time::after {
+    content: "";
+    display: block;
+  }
+}

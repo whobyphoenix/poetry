@@ -1,0 +1,66 @@
+---
+layout: default
+---
+{% assign book_name = page.path | split: '/' | last | split: '.' | first %}
+<article class="book">
+  <header class="book-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="book-description">{{ page.description }}</p>
+    {% endif %}
+    <a href="{{ '/downloads/' | relative_url }}{{ book_name }}.epub" class="download-button">↓ Download E-pub</a>
+  </header>
+  
+  <div class="book-poems">
+    {% assign book_poems = site.poems | where_exp: "poem", "poem.books contains book_name or poem.book == book_name" %}
+    {% assign sorted_poems = book_poems | sort: "path" %}
+    {% for poem in sorted_poems %}
+      {% assign path_parts = poem.path | split: '/' %}
+      {% assign year = path_parts[1] %}
+      {% assign month = path_parts[2] %}
+      {% assign filename = path_parts[3] | split: '-' %}
+      {% assign day = filename[0] %}
+    
+    <section class="book-poem">
+      <header class="poem-header">
+        <h2 class="poem-title">{{ poem.title }}</h2>
+        <div class="poem-meta">
+          {% if poem.date_display %}
+          <time>{{ poem.date_display }}</time>
+          {% else %}
+          <time>
+            {% assign month_num = month | plus: 0 %}
+            {% case month_num %}
+              {% when 1 %}January{% when 2 %}February{% when 3 %}March{% when 4 %}April
+              {% when 5 %}May{% when 6 %}June{% when 7 %}July{% when 8 %}August
+              {% when 9 %}September{% when 10 %}October{% when 11 %}November{% when 12 %}December
+            {% endcase %}
+            {{ day | plus: 0 }}, {{ year }}
+          </time>
+          {% endif %}
+          {% if poem.authors %}
+          <span class="authors">
+            {% assign author_list = poem.authors | split: ', ' %}
+            {% for author_id in author_list %}
+              {% assign author_id_stripped = author_id | strip %}
+              {% assign author = site.authors | where_exp: "a", "a.path contains author_id_stripped" | first %}
+              {% if author and author.url %}
+                <a href="{{ author.url }}">{{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
+              {% elsif author %}
+                {{ author.name }}{% unless forloop.last %}, {% endunless %}
+              {% else %}
+                {{ author_id_stripped }}{% unless forloop.last %}, {% endunless %}
+              {% endif %}
+            {% endfor %}
+          </span>
+          {% endif %}
+        </div>
+      </header>
+      
+      <div class="poem-body">
+{{ poem.content }}
+      </div>
+    </section>
+    {% endfor %}
+  </div>
+</article>
