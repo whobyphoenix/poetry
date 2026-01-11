@@ -1,5 +1,5 @@
 ---
-title: "Infinity made by two asymptotically perfect mirrors."
+poem_title: "Infinity made by two asymptotically perfect mirrors."
 authors: phoenix
 books: drowning-admiration
 ---

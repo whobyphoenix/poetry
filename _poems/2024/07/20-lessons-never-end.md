@@ -1,5 +1,5 @@
 ---
-title: "Lessons never end."
+poem_title: "Lessons never end."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

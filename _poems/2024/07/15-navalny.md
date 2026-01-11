@@ -1,5 +1,5 @@
 ---
-title: "Навальный."
+poem_title: "Навальный."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

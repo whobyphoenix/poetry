@@ -1,5 +1,5 @@
 ---
-title: "Just another word for ignorance."
+poem_title: "Just another word for ignorance."
 authors: phoenix
 books: drowning-admiration
 ---

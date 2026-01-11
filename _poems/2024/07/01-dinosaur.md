@@ -1,5 +1,5 @@
 ---
-title: "What's the probability of meeting a dinosaur?"
+poem_title: "What's the probability of meeting a dinosaur?"
 authors: phoenix
 books: drowning-admiration
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Разбирая репертуары театров."
+poem_title: "Разбирая репертуары театров."
 authors: phoenix
 books: drowning-admiration
 ---

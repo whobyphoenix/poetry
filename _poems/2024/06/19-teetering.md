@@ -1,5 +1,5 @@
 ---
-title: "Teetering bulb of dread and dream refuses to teeter."
+poem_title: "Teetering bulb of dread and dream refuses to teeter."
 authors: phoenix
 books: drowning-admiration
 ---

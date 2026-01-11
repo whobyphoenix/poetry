@@ -1,5 +1,5 @@
 ---
-title: "Почти слепая."
+poem_title: "Почти слепая."
 authors: phoenix
 books: drowning-admiration
 ---

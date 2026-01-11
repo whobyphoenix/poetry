@@ -1,5 +1,5 @@
 ---
-title: "Suffering is always self-inflicted."
+poem_title: "Suffering is always self-inflicted."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

@@ -1,5 +1,5 @@
 ---
-title: "My favourite fable."
+poem_title: "My favourite fable."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

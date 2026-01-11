@@ -1,5 +1,5 @@
 ---
-title: "Полнолуние."
+poem_title: "Полнолуние."
 authors: phoenix
 books: drowning-admiration
 ---

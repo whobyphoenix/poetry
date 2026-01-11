@@ -1,5 +1,5 @@
 ---
-title: "Не родна."
+poem_title: "Не родна."
 authors: phoenix
 books: drowning-admiration
 ---

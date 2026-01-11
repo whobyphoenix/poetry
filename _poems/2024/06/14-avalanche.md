@@ -1,5 +1,5 @@
 ---
-title: "You who wish to conquer pain, you must learn what makes me kind."
+poem_title: "You who wish to conquer pain, you must learn what makes me kind."
 authors: phoenix
 books: drowning-admiration
 ---

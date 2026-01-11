@@ -1,5 +1,5 @@
 ---
-title: "Тот самый сон."
+poem_title: "Тот самый сон."
 authors: phoenix
 books: drowning-admiration
 ---

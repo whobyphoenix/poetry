@@ -1,5 +1,5 @@
 ---
-title: "Иное."
+poem_title: "Иное."
 authors: phoenix
 books: drowning-admiration
 ---

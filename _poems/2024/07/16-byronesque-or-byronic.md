@@ -1,5 +1,5 @@
 ---
-title: "Byronesque or byronic?"
+poem_title: "Byronesque or byronic?"
 authors: phoenix
 books: flashlight-in-the-dark
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Solstice."
+poem_title: "Solstice."
 authors: phoenix
 books: drowning-admiration
 ---

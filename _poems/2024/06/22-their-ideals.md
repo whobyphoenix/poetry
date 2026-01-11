@@ -1,5 +1,5 @@
 ---
-title: "Their ideals."
+poem_title: "Their ideals."
 authors: phoenix
 books: drowning-admiration
 ---

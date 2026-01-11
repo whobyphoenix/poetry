@@ -1,5 +1,5 @@
 ---
-title: "Лужами сжатый жулик."
+poem_title: "Лужами сжатый жулик."
 authors: phoenix
 books: drowning-admiration
 ---

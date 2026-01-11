@@ -1,5 +1,5 @@
 ---
-title: "Hexidea."
+poem_title: "Hexidea."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

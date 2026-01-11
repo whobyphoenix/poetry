@@ -1,5 +1,5 @@
 ---
-title: "По дороге."
+poem_title: "По дороге."
 authors: phoenix
 books: drowning-admiration
 ---

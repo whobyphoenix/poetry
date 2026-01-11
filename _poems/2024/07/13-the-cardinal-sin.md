@@ -1,5 +1,5 @@
 ---
-title: "The cardinal sin."
+poem_title: "The cardinal sin."
 authors: phoenix
 books: drowning-admiration
 ---

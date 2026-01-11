@@ -1,5 +1,5 @@
 ---
-title: "По делам их узнаете их."
+poem_title: "По делам их узнаете их."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

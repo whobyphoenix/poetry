@@ -1,5 +1,5 @@
 ---
-title: "Spirits never lie. Almost never."
+poem_title: "Spirits never lie. Almost never."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

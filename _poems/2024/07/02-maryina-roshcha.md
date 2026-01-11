@@ -1,5 +1,5 @@
 ---
-title: "Марьина Роща."
+poem_title: "Марьина Роща."
 authors: phoenix
 books: drowning-admiration
 ---

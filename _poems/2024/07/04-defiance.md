@@ -1,5 +1,5 @@
 ---
-title: "Или плохой перевод."
+poem_title: "Или плохой перевод."
 authors: phoenix
 books: drowning-admiration
 ---

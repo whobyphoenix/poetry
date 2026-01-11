@@ -1,5 +1,5 @@
 ---
-title: "Malady of a melody."
+poem_title: "Malady of a melody."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

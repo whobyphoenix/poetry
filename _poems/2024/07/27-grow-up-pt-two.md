@@ -1,5 +1,5 @@
 ---
-title: "Grow up, pt. 2. Abdication."
+poem_title: "Grow up, pt. 2. Abdication."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

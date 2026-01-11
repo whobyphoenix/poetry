@@ -1,5 +1,5 @@
 ---
-title: "С днём рожденья!"
+poem_title: "С днём рожденья!"
 authors: phoenix
 books: flashlight-in-the-dark
 ---

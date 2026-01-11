@@ -1,5 +1,5 @@
 ---
-title: "The Klingon proverb."
+poem_title: "The Klingon proverb."
 authors: phoenix
 books: drowning-admiration
 ---

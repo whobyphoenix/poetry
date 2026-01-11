@@ -1,5 +1,5 @@
 ---
-title: "Magic."
+poem_title: "Magic."
 authors: phoenix
 books: drowning-admiration
 ---

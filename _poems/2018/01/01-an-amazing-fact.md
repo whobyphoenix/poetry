@@ -1,5 +1,5 @@
 ---
-title: "Удивительный факт."
+poem_title: "Удивительный факт."
 authors: phoenix
 books: drowning-admiration
 date_display: "2018"

@@ -1,5 +1,5 @@
 ---
-title: "The shooting."
+poem_title: "The shooting."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

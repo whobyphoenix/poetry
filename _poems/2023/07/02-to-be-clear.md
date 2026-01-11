@@ -1,5 +1,5 @@
 ---
-title: "Clarity."
+poem_title: "Clarity."
 authors: phoenix
 books: drowning-admiration
 ---

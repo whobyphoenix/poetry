@@ -1,5 +1,5 @@
 ---
-title: "Idiot wind."
+poem_title: "Idiot wind."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

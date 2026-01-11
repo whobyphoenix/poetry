@@ -1,5 +1,5 @@
 ---
-title: "A slightly less rational explanation."
+poem_title: "A slightly less rational explanation."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

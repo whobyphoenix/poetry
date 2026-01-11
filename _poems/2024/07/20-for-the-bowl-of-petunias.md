@@ -1,5 +1,5 @@
 ---
-title: "Для горшка с петунией."
+poem_title: "Для горшка с петунией."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Путаница Эдгара."
+poem_title: "Путаница Эдгара."
 authors: phoenix
 books: drowning-admiration
 ---

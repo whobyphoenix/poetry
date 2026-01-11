@@ -1,5 +1,5 @@
 ---
-title: "Бхавачакра-тест."
+poem_title: "Бхавачакра-тест."
 authors: phoenix
 books: drowning-admiration
 date_display: "2018"

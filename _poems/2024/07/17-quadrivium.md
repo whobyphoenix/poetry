@@ -1,5 +1,5 @@
 ---
-title: "Quadrivium."
+poem_title: "Quadrivium."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

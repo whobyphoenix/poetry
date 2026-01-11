@@ -29,7 +29,7 @@ layout: default
     
     <section class="book-poem">
       <header class="poem-header">
-        {% assign poem_title = poem.title | default: page.default_title %}
+        {% assign poem_title = poem.poem_title | default: page.default_poem_title | default: "..." %}
         <h2 class="poem-title">{{ poem_title }}</h2>
         <div class="poem-meta">
           {% if poem.date_display %}

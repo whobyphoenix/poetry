@@ -1,5 +1,5 @@
 ---
-title: "Вру я, вправе ли, но я не могу быть спокойней."
+poem_title: "Вру я, вправе ли, но я не могу быть спокойней."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

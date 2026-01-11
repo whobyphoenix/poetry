@@ -1,5 +1,5 @@
 ---
-title: "Rarities."
+poem_title: "Rarities."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

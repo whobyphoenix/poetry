@@ -1,5 +1,5 @@
 ---
-title: "Grow up, pt. 1. Redemption."
+poem_title: "Grow up, pt. 1. Redemption."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

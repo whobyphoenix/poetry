@@ -1,5 +1,5 @@
 ---
-title: "Басё."
+poem_title: "Басё."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

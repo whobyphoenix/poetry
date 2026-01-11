@@ -1,5 +1,5 @@
 ---
-title: "The rainbow."
+poem_title: "The rainbow."
 authors: phoenix
 books: flashlight-in-the-dark
 ---

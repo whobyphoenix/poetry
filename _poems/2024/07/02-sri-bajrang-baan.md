@@ -1,5 +1,5 @@
 ---
-title: "We would have never kept going if the going wasn't so damned rough."
+poem_title: "We would have never kept going if the going wasn't so damned rough."
 authors: phoenix
 books: drowning-admiration
 ---

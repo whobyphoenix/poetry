@@ -1,5 +1,5 @@
 ---
-title: "В тот вечер так резко вдруг похолодало."
+poem_title: "В тот вечер так резко вдруг похолодало."
 authors: phoenix
 books: drowning-admiration
 ---

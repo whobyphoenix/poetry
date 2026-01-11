@@ -1,5 +1,5 @@
 ---
-title: "Reading the Gita."
+poem_title: "Reading the Gita."
 authors: phoenix
 books: drowning-admiration
 ---

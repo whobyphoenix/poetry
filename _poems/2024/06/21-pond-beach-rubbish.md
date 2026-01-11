@@ -1,5 +1,5 @@
 ---
-title: "Когда б вы знали из какого сора."
+poem_title: "Когда б вы знали из какого сора."
 authors: phoenix
 books: drowning-admiration
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Московской жары миражи."
+poem_title: "Московской жары миражи."
 authors: phoenix
 books: drowning-admiration
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Цитадель."
+poem_title: "Цитадель."
 authors: phoenix
 books: drowning-admiration
 ---

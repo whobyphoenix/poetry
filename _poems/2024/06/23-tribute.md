@@ -1,5 +1,5 @@
 ---
-title: "Это не плагиат, это tribute."
+poem_title: "Это не плагиат, это tribute."
 authors: phoenix
 books: drowning-admiration
 ---
