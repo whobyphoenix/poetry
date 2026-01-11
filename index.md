@@ -23,7 +23,12 @@ layout: default
 
 <article class="poem">
   <header class="poem-header">
-    <h1 class="poem-title">{{ latest.title }}</h1>
+    {% assign has_books = latest.books | default: latest.book | default: "" %}
+    {% assign book_list = has_books | split: ', ' %}
+    {% assign first_book_id = book_list | first | strip %}
+    {% assign first_book = site.books | where_exp: "b", "b.path contains first_book_id" | first %}
+    {% assign poem_title = latest.title | default: first_book.default_title | default: "..." %}
+    <h1 class="poem-title">{{ poem_title }}</h1>
     <div class="poem-meta">
       {% if latest.date_display %}
       <time>{{ latest.date_display }}</time>

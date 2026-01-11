@@ -67,8 +67,8 @@ def get_poems():
         date = extract_date_from_path(poem_file)
         date_display = meta.get('date_display', '')
         
-        # Get title (default to "..." if not set)
-        title = meta.get('title', '...')
+        # Get title (empty if not set, will use book's default_title)
+        title = meta.get('title', '')
         
         # Get books (can be comma-separated, support both 'book' and 'books')
         books_str = meta.get('books', meta.get('book', ''))
@@ -107,7 +107,8 @@ def get_book_metadata():
             books[name] = {
                 'title': meta.get('title', name),
                 'description': meta.get('description', ''),
-                'author': meta.get('author', '')
+                'author': meta.get('author', ''),
+                'default_title': meta.get('default_title', '...')
             }
     
     return books
@@ -145,6 +146,7 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
     title = book_meta.get('title', book_name)
     description = book_meta.get('description', '')
     book_author_id = book_meta.get('author', '')
+    default_title = book_meta.get('default_title', '...')
     
     # Get book author display name
     if book_author_id and book_author_id in author_meta:
@@ -164,7 +166,8 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
     lines.append("\n---\n")
     
     for poem in poems:
-        lines.append(f"\n## {poem['title']}\n")
+        poem_title = poem['title'] if poem['title'] else default_title
+        lines.append(f"\n## {poem_title}\n")
         
         # Use date_display if set, otherwise format the date
         if poem['date_display']:
