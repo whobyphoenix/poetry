@@ -37,7 +37,7 @@ poem_title: "Optional Title"      # If omitted, uses book's default_poem_title
 authors: phoenix                  # Comma-separated if multiple: "phoenix, claude"
 books: drowning-admiration        # Required to publish; omit for drafts
 date_display: "2018"              # Optional override (e.g., for uncertain dates)
-body: |
+text: |
   Poem text goes here.
   Line breaks are preserved.
   - Special characters work fine.
@@ -121,7 +121,7 @@ Collections:
 ---
 authors: phoenix
 books: flashlight-in-the-dark
-body: |
+text: |
   Your poem here.
 ---
 ```
@@ -155,7 +155,7 @@ link: "https://claude.ai/"
 
 1. **Use `poem_title` not `title`** — Jekyll auto-generates `title` from filename
 2. **Use `link` not `url` for authors** — `url` is reserved by Jekyll
-3. **Poem body must be in YAML `body:` field** — avoids Markdown processing (lists, etc.)
+3. **Poem text must be in YAML `text:` field** — avoids Markdown processing (lists, etc.)
 4. **`|` in YAML preserves newlines** — essential for poetry formatting
 5. **Special characters in titles:** Wrap in quotes, e.g., `poem_title: "What is 'truth'?"`
 6. **Uncertain dates:** Use `date_display: "2018"` and put file in `01/01-slug.md`

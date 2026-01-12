@@ -2,13 +2,13 @@
 poem_title: "Something human."
 authors: phoenix
 books: flashlight-in-the-dark
+text: |
+  The benevolent Universe
+  Allows me only glimpses
+  In her infinite wisdom.
+  Like I know as well as ever:
+  Suffering is a choice,
+  So why?
+  Why do I
+  Choose to suffer?
 ---
-
-The benevolent Universe
-Allows me only glimpses
-In her infinite wisdom.
-Like I know as well as ever:
-Suffering is a choice,
-So why?
-Why do I
-Choose to suffer?

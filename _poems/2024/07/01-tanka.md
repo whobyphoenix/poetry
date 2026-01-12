@@ -1,10 +1,10 @@
 ---
 authors: phoenix
 books: drowning-admiration
+text: |
+  Doesn't know the sea,
+  A small frog down the well,
+  Yet, the stars she sees.
+  When a sudden rain pours in,
+  She mistakes it for a dream.
 ---
-
-Doesn't know the sea,
-A small frog down the well,
-Yet, the stars she sees.
-When a sudden rain pours in,
-She mistakes it for a dream.

@@ -2,8 +2,8 @@
 poem_title: "The saying."
 authors: phoenix
 books: drowning-admiration
+text: |
+  Don't try their patience,
+  Don't meddle in affairs
+  Of subtle wizards.
 ---
-
-Don't try their patience,
-Don't meddle in affairs
-Of subtle wizards.
