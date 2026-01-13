@@ -10,6 +10,16 @@ A minimalist poetry website built with Jekyll and GitHub Pages.
 - **Static site generator:** Jekyll (hosted on GitHub Pages)
 - **E-pub generation:** Python script using Pandoc (runs in GitHub Actions)
 - **Deployment:** Automatic via GitHub Actions on push to `main`
+- **Text rendering:** Raw text from YAML with CSS whitespace preservation (no Markdown processing)
+
+## Text Rendering Philosophy
+
+Poems are stored in YAML `text:` fields and rendered as literal text to preserve exact formatting:
+
+- **Web pages:** `{{ poem.text }}` + CSS `white-space: pre-wrap` preserves all whitespace naturally
+- **EPUBs:** HTML generation with leading spaces converted to `&nbsp;` entities for EPUB reader compatibility
+- **No Markdown processing:** Special characters like `- ` (dialogue), `* ` (emphasis markers) display literally
+- **No Jekyll plugins:** Everything works with standard Jekyll + CSS
 
 ## Repository Structure
 
@@ -94,24 +104,41 @@ Books have a single author. Per-poem attribution follows these rules:
 
 `scripts/generate_epubs.py` runs during GitHub Actions build:
 
-1. Reads all poems with `books:` field
+1. Reads all poems with `books:` field (using PyYAML for proper multi-line YAML parsing)
 2. Groups by book
-3. Generates one `.epub` per book via Pandoc
-4. Output to `_site/downloads/`
+3. Generates HTML (not Markdown) with poem text:
+   - Leading spaces → `&nbsp;` HTML entities (for EPUB reader compatibility)
+   - Newlines → `<br>` tags
+   - CSS: `white-space: pre-wrap` as fallback
+4. Converts HTML to `.epub` via Pandoc (`-f html`)
+5. Output to `_site/downloads/`
+
+**Why HTML instead of Markdown?**
+- Web and EPUB use identical rendering logic
+- No Markdown processing = dialogue markers (`- `), emphasis markers (`*`), etc. display literally
+- No fragile escaping needed
+- Consistent whitespace handling
 
 E-pub metadata includes book title and author (from book's `author:` field).
 
 ## Jekyll Configuration Notes
 
-```yaml
-kramdown:
-  hard_wrap: true    # Preserves line breaks in Markdown
+**Collections:**
+- `poems`: `output: false` (no individual pages)
+- `authors`: `output: false` (no individual pages)
+- `books`: `output: true` (generates `/books/slug/` pages)
+
+**CSS Whitespace Preservation:**
+```css
+.poem-body {
+  white-space: pre-wrap;  /* Preserves spaces, tabs, and newlines */
+}
 ```
 
-Collections:
-- `poems`: `output: false` (no individual pages)
-- `authors`: `output: false` (no individual pages)  
-- `books`: `output: true` (generates `/books/slug/` pages)
+This CSS handles all text formatting—no Liquid filters or Jekyll plugins needed. The `pre-wrap` value:
+- Preserves leading spaces (for custom indentation)
+- Preserves newlines naturally (no `<br>` conversion needed in templates)
+- Still wraps long lines at container boundaries
 
 ## Common Tasks
 
@@ -159,10 +186,21 @@ link: "https://claude.ai/"
 4. **`|` in YAML preserves newlines** — essential for poetry formatting
 5. **Special characters in titles:** Wrap in quotes, e.g., `poem_title: "What is 'truth'?"`
 6. **Uncertain dates:** Use `date_display: "2018"` and put file in `01/01-slug.md`
+7. **Custom indentation:** Use leading spaces in poem text for visual structure (e.g., see `_poems/2024/06/28-funny-voices.md`)
+8. **Literal special chars:** Lines starting with `- `, `* `, etc. display as-is (not as Markdown lists/emphasis)
+9. **No filters needed:** Templates use `{{ poem.text }}` directly—CSS handles whitespace
+10. **EPUB vs Web:** Both render identically, but EPUBs use `&nbsp;` entities for leading spaces (better reader compatibility)
 
 ## Tech Stack Versions
 
 - Jekyll 4.x
-- Python 3.11
+- Python 3.11 + PyYAML (for EPUB generation)
 - Pandoc (system package)
 - GitHub Pages with GitHub Actions deployment
+
+## Historical Notes
+
+**Migration to `text:` field (January 2026):**
+- All poems were migrated from Markdown body format to YAML `text:` field
+- Reason: Prevent Markdown processing of special characters in poems (dialogue markers, etc.)
+- Result: Cleaner separation of metadata (frontmatter) and content (`text:` field)
