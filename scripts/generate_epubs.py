@@ -8,29 +8,24 @@ Extracts dates from file paths: _poems/YYYY/MM/DD-title.md
 import subprocess
 import sys
 import re
+import yaml
 from pathlib import Path
 
 def parse_frontmatter(content):
-    """Extract YAML frontmatter and body from markdown file."""
+    """Extract YAML frontmatter from markdown file."""
     if not content.startswith('---'):
-        return {}, content
-    
+        return {}
+
     parts = content.split('---', 2)
     if len(parts) < 3:
-        return {}, content
-    
-    frontmatter = {}
-    for line in parts[1].strip().split('\n'):
-        if ':' in line:
-            key, value = line.split(':', 1)
-            value = value.strip()
-            # Remove surrounding quotes if present
-            if (value.startswith('"') and value.endswith('"')) or \
-               (value.startswith("'") and value.endswith("'")):
-                value = value[1:-1]
-            frontmatter[key.strip()] = value
-    
-    return frontmatter, parts[2].strip()
+        return {}
+
+    try:
+        frontmatter = yaml.safe_load(parts[1])
+        return frontmatter if frontmatter else {}
+    except yaml.YAMLError as e:
+        print(f"Warning: Failed to parse YAML frontmatter: {e}")
+        return {}
 
 def extract_date_from_path(poem_path):
     """Extract date from path like _poems/2024/07/01-title.md"""
@@ -55,54 +50,57 @@ def get_poems():
     """Load all poems from _poems directory."""
     poems = []
     poems_dir = Path('_poems')
-    
+
     if not poems_dir.exists():
         print(f"Warning: {poems_dir} not found")
         return poems
-    
+
     for poem_file in sorted(poems_dir.rglob('*.md')):
         content = poem_file.read_text(encoding='utf-8')
-        meta, body = parse_frontmatter(content)
-        
+        meta = parse_frontmatter(content)
+
         date = extract_date_from_path(poem_file)
         date_display = meta.get('date_display', '')
-        
+
         # Get title (empty if not set, will use book's default_title)
         title = meta.get('poem_title', '')
-        
+
         # Get books (can be comma-separated, support both 'book' and 'books')
         books_str = meta.get('books', meta.get('book', ''))
         books = [b.strip() for b in books_str.split(',') if b.strip()]
-        
+
         # Skip poems without books (drafts)
         if not books:
             continue
-        
+
         # Get authors (default to phoenix)
         authors_str = meta.get('authors', 'phoenix')
         authors = [a.strip() for a in authors_str.split(',') if a.strip()]
-        
+
+        # Get poem text from 'text' field in frontmatter
+        text = meta.get('text', '').strip()
+
         poems.append({
             'path': poem_file,
             'title': title,
-            'body': body,
+            'text': text,
             'books': books,
             'authors': authors,
             'date': date,
             'date_display': date_display
         })
-    
+
     return poems
 
 def get_book_metadata():
     """Load book metadata from _books directory."""
     books = {}
     books_dir = Path('_books')
-    
+
     if books_dir.exists():
         for book_file in books_dir.glob('*.md'):
             content = book_file.read_text(encoding='utf-8')
-            meta, _ = parse_frontmatter(content)
+            meta = parse_frontmatter(content)
             name = book_file.stem  # filename without extension
             books[name] = {
                 'title': meta.get('title', name),
@@ -110,23 +108,23 @@ def get_book_metadata():
                 'author': meta.get('author', ''),
                 'default_poem_title': meta.get('default_poem_title', '...')
             }
-    
+
     return books
 
 def get_author_metadata():
     """Load author metadata from _authors directory."""
     authors = {}
     authors_dir = Path('_authors')
-    
+
     if authors_dir.exists():
         for author_file in authors_dir.glob('*.md'):
             content = author_file.read_text(encoding='utf-8')
-            meta, _ = parse_frontmatter(content)
+            meta = parse_frontmatter(content)
             name = author_file.stem  # filename without extension
             authors[name] = {
                 'name': meta.get('name', name)
             }
-    
+
     return authors
 
 def format_date(date_str):
@@ -211,8 +209,8 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
             lines.append(f"*{attribution}*\n")
         elif date_display:
             lines.append(f"*{date_display}*\n")
-        
-        lines.append(f"\n{poem['body']}\n")
+
+        lines.append(f"\n{poem['text']}\n")
         lines.append("\n---\n")
     
     combined = '\n'.join(lines)
