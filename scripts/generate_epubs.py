@@ -140,12 +140,12 @@ def format_date(date_str):
         return date_str
 
 def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
-    """Generate an epub file for a book."""
+    """Generate an epub file for a book using HTML to match web rendering."""
     title = book_meta.get('title', book_name)
     description = book_meta.get('description', '')
     book_author_id = book_meta.get('author', '')
     default_poem_title = book_meta.get('default_poem_title', '...')
-    
+
     # Get book author display name
     if book_author_id and book_author_id in author_meta:
         book_author_name = author_meta[book_author_id]['name']
@@ -153,31 +153,45 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
         book_author_name = book_author_id
     else:
         book_author_name = ''
-    
+
     # Sort poems by date
     poems = sorted(poems, key=lambda p: p['date'])
-    
-    # Build markdown content
-    lines = [f"# {title}\n"]
+
+    # Build HTML content (matching web page structure)
+    html_parts = [
+        '<!DOCTYPE html>',
+        '<html>',
+        '<head>',
+        '<meta charset="UTF-8">',
+        f'<title>{title}</title>',
+        '<style>',
+        '  .poem-body { white-space: pre-wrap; }',  # Preserve whitespace like web CSS
+        '</style>',
+        '</head>',
+        '<body>',
+        f'<h1>{title}</h1>'
+    ]
+
     if description:
-        lines.append(f"*{description}*\n")
-    lines.append("\n---\n")
-    
+        html_parts.append(f'<p><em>{description}</em></p>')
+
+    html_parts.append('<hr>')
+
     for poem in poems:
         poem_title = poem['title'] if poem['title'] else default_poem_title
-        lines.append(f"\n## {poem_title}\n")
-        
+        html_parts.append(f'<h2>{poem_title}</h2>')
+
         # Use date_display if set, otherwise format the date
         if poem['date_display']:
             date_display = poem['date_display']
         else:
             date_display = format_date(poem['date'])
-        
+
         # Author attribution logic
         poem_authors = poem['authors']
         poem_has_book_author = book_author_id in poem_authors
         other_authors = [a for a in poem_authors if a != book_author_id]
-        
+
         # Get display names for other authors
         other_author_names = []
         for a in other_authors:
@@ -185,7 +199,7 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
                 other_author_names.append(author_meta[a]['name'])
             else:
                 other_author_names.append(a)
-        
+
         if poem_has_book_author and other_author_names:
             # Collaboration
             attribution = f"In collaboration with {', '.join(other_author_names)}"
@@ -201,32 +215,35 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
                 else:
                     all_author_names.append(a)
             attribution = ', '.join(all_author_names)
-        
+
         # Combine attribution and date
         if attribution and date_display:
-            lines.append(f"*{attribution} — {date_display}*\n")
+            html_parts.append(f'<p><em>{attribution} — {date_display}</em></p>')
         elif attribution:
-            lines.append(f"*{attribution}*\n")
+            html_parts.append(f'<p><em>{attribution}</em></p>')
         elif date_display:
-            lines.append(f"*{date_display}*\n")
+            html_parts.append(f'<p><em>{date_display}</em></p>')
 
-        lines.append(f"\n{poem['text']}\n")
-        lines.append("\n---\n")
-    
-    combined = '\n'.join(lines)
-    
-    # Write temp markdown
-    temp_file = Path(f'/tmp/{book_name}.md')
-    temp_file.write_text(combined, encoding='utf-8')
-    
-    # Generate epub
+        # Convert poem text to HTML: newlines to <br> (matching newline_to_br filter)
+        poem_html = poem['text'].replace('\n', '<br>\n')
+        html_parts.append(f'<div class="poem-body">{poem_html}</div>')
+        html_parts.append('<hr>')
+
+    html_parts.extend(['</body>', '</html>'])
+    html_content = '\n'.join(html_parts)
+
+    # Write temp HTML file
+    temp_file = Path(f'/tmp/{book_name}.html')
+    temp_file.write_text(html_content, encoding='utf-8')
+
+    # Generate epub from HTML
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / f'{book_name}.epub'
-    
+
     cmd = [
         'pandoc', str(temp_file),
-        '-f', 'markdown+hard_line_breaks',
+        '-f', 'html',  # Input is HTML, not Markdown
         '-o', str(output_file),
         '--metadata', f'title={title}',
         '--toc',
@@ -234,13 +251,13 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
     ]
     if book_author_name:
         cmd.extend(['--metadata', f'author={book_author_name}'])
-    
+
     result = subprocess.run(cmd, capture_output=True, text=True)
-    
+
     if result.returncode != 0:
         print(f"Error generating {book_name}.epub: {result.stderr}")
         return False
-    
+
     print(f"Generated: {output_file} ({len(poems)} poems)")
     return True
 
