@@ -139,6 +139,31 @@ def format_date(date_str):
     except:
         return date_str
 
+def text_to_html_preserving_spaces(text):
+    """Convert poem text to HTML, preserving leading spaces and newlines.
+
+    Converts leading spaces on each line to &nbsp; entities to ensure they're
+    preserved in EPUB readers, and newlines to <br> tags.
+    """
+    if not text:
+        return ''
+
+    lines = text.split('\n')
+    html_lines = []
+
+    for line in lines:
+        # Count leading spaces
+        leading_spaces = len(line) - len(line.lstrip(' '))
+        if leading_spaces > 0:
+            # Replace leading spaces with &nbsp; entities
+            html_line = '&nbsp;' * leading_spaces + line[leading_spaces:]
+        else:
+            html_line = line
+        html_lines.append(html_line)
+
+    # Join with <br> for line breaks
+    return '<br>\n'.join(html_lines)
+
 def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
     """Generate an epub file for a book using HTML to match web rendering."""
     title = book_meta.get('title', book_name)
@@ -224,8 +249,8 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
         elif date_display:
             html_parts.append(f'<p><em>{date_display}</em></p>')
 
-        # Convert poem text to HTML: newlines to <br> (matching newline_to_br filter)
-        poem_html = poem['text'].replace('\n', '<br>\n')
+        # Convert poem text to HTML, preserving leading spaces and newlines
+        poem_html = text_to_html_preserving_spaces(poem['text'])
         html_parts.append(f'<div class="poem-body">{poem_html}</div>')
         html_parts.append('<hr>')
 
