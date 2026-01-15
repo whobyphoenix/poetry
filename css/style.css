@@ -112,7 +112,6 @@ h2.poem-title {
 .poem-commentary {
   margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--border);
   font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   color: var(--text-light);
