@@ -195,7 +195,7 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
         f'<title>{title}</title>',
         '<style>',
         '  .poem-body { white-space: pre-wrap; }',  # Preserve whitespace like web CSS
-        '  .poem-commentary { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #e5e3df; font-size: 0.85rem; color: #666; font-style: italic; white-space: pre-wrap; }',
+        '  .poem-commentary { margin-top: 2.5rem; padding-top: 0; font-size: smaller; color: #666; font-style: italic; white-space: pre-wrap; }',
         '</style>',
         '</head>',
         '<body>',
