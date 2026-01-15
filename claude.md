@@ -20,6 +20,7 @@ Poems are stored in YAML `text:` fields and rendered as literal text to preserve
 - **EPUBs:** HTML generation with leading spaces converted to `&nbsp;` entities for EPUB reader compatibility
 - **No Markdown processing:** Special characters like `- ` (dialogue), `* ` (emphasis markers) display literally
 - **No Jekyll plugins:** Everything works with standard Jekyll + CSS
+- **Commentary support:** Optional `commentary:` field rendered as footnote-style text after the poem (same no-Markdown rendering as poem text)
 
 ## Repository Structure
 
@@ -51,6 +52,9 @@ text: |
   Poem text goes here.
   Line breaks are preserved.
   - Special characters work fine.
+commentary: |                     # Optional footnote-style text after poem
+  Additional context or notes.
+  Also preserves formatting.
 ---
 ```
 
@@ -110,6 +114,7 @@ Books have a single author. Per-poem attribution follows these rules:
    - Leading spaces → `&nbsp;` HTML entities (for EPUB reader compatibility)
    - Newlines → `<br>` tags
    - CSS: `white-space: pre-wrap` as fallback
+   - Commentary wrapped in `()` with empty line before it (for EPUB reader consistency)
 4. Converts HTML to `.epub` via Pandoc (`-f html`)
 5. Output to `_site/downloads/`
 
@@ -132,6 +137,17 @@ E-pub metadata includes book title and author (from book's `author:` field).
 ```css
 .poem-body {
   white-space: pre-wrap;  /* Preserves spaces, tabs, and newlines */
+}
+
+.poem-commentary {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-style: italic;
+  white-space: pre-wrap;  /* Preserves formatting like poem text */
 }
 ```
 
@@ -190,6 +206,7 @@ link: "https://claude.ai/"
 8. **Literal special chars:** Lines starting with `- `, `* `, etc. display as-is (not as Markdown lists/emphasis)
 9. **No filters needed:** Templates use `{{ poem.text }}` directly—CSS handles whitespace
 10. **EPUB vs Web:** Both render identically, but EPUBs use `&nbsp;` entities for leading spaces (better reader compatibility)
+11. **Commentary styling differs:** Web uses CSS border/spacing; EPUB wraps commentary in `()` with empty line before it (plain text formatting is more reliable across EPUB readers than CSS)
 
 ## Tech Stack Versions
 
@@ -204,3 +221,10 @@ link: "https://claude.ai/"
 - All poems were migrated from Markdown body format to YAML `text:` field
 - Reason: Prevent Markdown processing of special characters in poems (dialogue markers, etc.)
 - Result: Cleaner separation of metadata (frontmatter) and content (`text:` field)
+
+**Commentary support (January 2026):**
+- Added optional `commentary:` field for footnote-style text after poems
+- Renders without Markdown processing (same as poem text)
+- Web: Styled with smaller italic text, subtle border separator, `white-space: pre-wrap`
+- EPUB: Wrapped in parentheses with empty line before it (plain text formatting for EPUB reader reliability)
+- CSS `font-size: smaller` used in EPUB as nice-to-have enhancement (works in some readers)
