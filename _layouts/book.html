@@ -88,6 +88,11 @@ layout: default
       <div class="poem-body">
 {{ poem.text }}
       </div>
+      {% if poem.commentary %}
+      <div class="poem-commentary">
+{{ poem.commentary }}
+      </div>
+      {% endif %}
     </section>
     {% endfor %}
   </div>
