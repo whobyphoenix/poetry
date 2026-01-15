@@ -195,7 +195,7 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
         f'<title>{title}</title>',
         '<style>',
         '  .poem-body { white-space: pre-wrap; }',  # Preserve whitespace like web CSS
-        '  .poem-commentary { margin-top: 2.5rem; padding-top: 0; font-size: smaller; color: #666; font-style: italic; white-space: pre-wrap; }',
+        '  .poem-commentary { margin-top: 0; padding-top: 0; font-size: smaller; color: #666; font-style: italic; white-space: pre-wrap; }',
         '</style>',
         '</head>',
         '<body>',
@@ -261,7 +261,7 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
         # Add commentary if present
         if poem.get('commentary'):
             commentary_html = text_to_html_preserving_spaces(poem['commentary'])
-            html_parts.append(f'<div class="poem-commentary">{commentary_html}</div>')
+            html_parts.append(f'<div class="poem-commentary"><br><br>({commentary_html})</div>')
 
         html_parts.append('<hr>')
 
