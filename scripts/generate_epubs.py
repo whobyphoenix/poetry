@@ -110,7 +110,8 @@ def get_book_metadata():
                 'title': meta.get('title', name),
                 'description': meta.get('description', ''),
                 'author': meta.get('author', ''),
-                'default_poem_title': meta.get('default_poem_title', '...')
+                'default_poem_title': meta.get('default_poem_title', '...'),
+                'cover': meta.get('cover', '')
             }
 
     return books
@@ -174,6 +175,7 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
     description = book_meta.get('description', '')
     book_author_id = book_meta.get('author', '')
     default_poem_title = book_meta.get('default_poem_title', '...')
+    cover_filename = book_meta.get('cover', '')
 
     # Get book author display name
     if book_author_id and book_author_id in author_meta:
@@ -287,6 +289,14 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
     ]
     if book_author_name:
         cmd.extend(['--metadata', f'author={book_author_name}'])
+
+    # Add cover image if specified
+    if cover_filename:
+        cover_path = Path('assets/images/covers') / cover_filename
+        if cover_path.exists():
+            cmd.extend(['--epub-cover-image', str(cover_path)])
+        else:
+            print(f"Warning: Cover image not found at {cover_path}")
 
     result = subprocess.run(cmd, capture_output=True, text=True)
 
