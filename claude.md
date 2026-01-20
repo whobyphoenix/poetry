@@ -35,6 +35,7 @@ assets/
   css/style.css               # Styles (Lora + Inter fonts)
   images/
     covers/                   # Book cover images
+    favicon/                  # Favicon files (multiple sizes/formats)
     illustrations/            # Poem illustrations (future)
 index.md                      # Homepage (latest poem + book list)
 scripts/generate_epubs.py     # E-pub generation script
@@ -83,6 +84,14 @@ cover: book-cover.jpg             # Optional cover image (filename in assets/ima
 
 **Cover images:** Optional. If specified, the image should be placed in `assets/images/covers/` and referenced by filename only. Recommended specs: 1600×2400px (2:3 ratio), JPEG, under 500KB. The cover will display on both the web book page and in the generated EPUB.
 
+**Web display:** Cover images are displayed as full-width background images with text overlaid at the top. The layout uses:
+- `background-size: contain` to show the full image without cropping
+- `padding-top: 150%` to maintain the 2:3 aspect ratio
+- Gradient overlay at the top for text readability (title, author, download link appear in white with text shadows)
+- Book title, author name, and download link are positioned absolutely over the cover
+
+**EPUB display:** Cover images are added via Pandoc's `--epub-cover-image` flag. EPUBs display the cover as the first page, followed by an auto-generated title page with book title and author.
+
 ## Author File Format
 
 ```yaml
@@ -110,6 +119,19 @@ Books have a single author. Per-poem attribution follows these rules:
 - **Book pages (`/books/slug/`):** Full text of all poems in the book (like an e-reader)
 - **No individual poem pages** — poems are only viewable within their book context
 - **No author pages** — author names link to external URLs
+
+## Site Branding
+
+**Favicon:** The site uses a four-leaf clover (🍀) emoji as the favicon, stored in multiple formats/sizes in `assets/images/favicon/`:
+- `favicon.svg` - Vector format (modern browsers)
+- `favicon.ico` - Legacy ICO format (16×16, 32×32)
+- `favicon-96x96.png` - Standard PNG favicon
+- `apple-touch-icon.png` - 180×180px for iOS devices
+- `web-app-manifest-192x192.png` - 192×192px for Android
+- `web-app-manifest-512x512.png` - 512×512px for high-res Android
+- `site.webmanifest` - Web app manifest for PWA support
+
+All favicon tags are included in `_layouts/default.html` in the `<head>` section.
 
 ## E-pub Generation
 
@@ -244,3 +266,17 @@ link: "https://claude.ai/"
 - Web: Styled with smaller italic text, subtle border separator, `white-space: pre-wrap`
 - EPUB: Wrapped in parentheses with empty line before it (plain text formatting for EPUB reader reliability)
 - CSS `font-size: smaller` used in EPUB as nice-to-have enhancement (works in some readers)
+
+**Book cover support (January 2026):**
+- Added optional `cover:` field to book metadata for cover images
+- Cover images stored in `assets/images/covers/` (recommended: 1600×2400px, 2:3 ratio, JPEG, <500KB)
+- Web: Covers display as full-width background with text overlay at top (gradient for readability)
+- EPUB: Covers included via Pandoc's `--epub-cover-image` flag
+- CSS uses `padding-top: 150%` trick to maintain 2:3 aspect ratio
+- Experimented with multiple display styles before settling on text-overlay-at-top approach
+
+**Favicon addition (January 2026):**
+- Added four-leaf clover (🍀) emoji as site favicon
+- Generated multiple formats/sizes for cross-platform support
+- Includes SVG (modern browsers), ICO (legacy), PNG variants, and web app manifest
+- Stored in `assets/images/favicon/` directory
