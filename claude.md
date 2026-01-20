@@ -31,7 +31,11 @@ _authors/*.md                 # Author definitions
 _layouts/
   default.html                # Base template
   book.html                   # Book page template
-css/style.css                 # Styles (Lora + Inter fonts)
+assets/
+  css/style.css               # Styles (Lora + Inter fonts)
+  images/
+    covers/                   # Book cover images
+    illustrations/            # Poem illustrations (future)
 index.md                      # Homepage (latest poem + book list)
 scripts/generate_epubs.py     # E-pub generation script
 .github/workflows/deploy.yml  # CI/CD pipeline
@@ -71,10 +75,13 @@ commentary: |                     # Optional footnote-style text after poem
 title: "Book Display Title"
 author: phoenix                   # References _authors/phoenix.md
 default_poem_title: "..."         # Used when poem has no poem_title
+cover: book-cover.jpg             # Optional cover image (filename in assets/images/covers/)
 ---
 ```
 
 **Filename is the book identifier** — poems reference it via `books: filename-without-extension`
+
+**Cover images:** Optional. If specified, the image should be placed in `assets/images/covers/` and referenced by filename only. Recommended specs: 1600×2400px (2:3 ratio), JPEG, under 500KB. The cover will display on both the web book page and in the generated EPUB.
 
 ## Author File Format
 
@@ -124,7 +131,9 @@ Books have a single author. Per-poem attribution follows these rules:
 - No fragile escaping needed
 - Consistent whitespace handling
 
-E-pub metadata includes book title and author (from book's `author:` field).
+**E-pub metadata includes:**
+- Book title and author (from book's `author:` field)
+- Cover image (if `cover:` field is set in book metadata) — passed to Pandoc via `--epub-cover-image`
 
 ## Jekyll Configuration Notes
 
@@ -176,8 +185,15 @@ text: |
 title: "New Book Title"
 author: phoenix
 default_poem_title: "..."
+cover: new-book-cover.jpg  # Optional
 ---
 ```
+
+**Add a book cover:**
+1. Place image in `assets/images/covers/` (e.g., `book-name.jpg`)
+2. Add `cover: book-name.jpg` to book's frontmatter
+3. Recommended specs: 1600×2400px (2:3 ratio), JPEG, under 500KB
+4. Cover displays on web book page and in EPUB
 
 **Add a new author:**
 ```yaml
