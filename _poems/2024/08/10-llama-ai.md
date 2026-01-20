@@ -7,7 +7,7 @@ text: |
   I believe that you're thus,
   when the heart is hassled by a pulse
   of hate like blood lust.
-  Lower the urge to grow up.
+  Lower the urge to grow up!
   It derives
   from the major highways
   of the brain,
@@ -15,6 +15,6 @@ text: |
   such a mass
   surge of class
   creation of danger
-  that my heart escapes,
-  independent in hunger.
+  that my mind escapes
+  through the looking-glass.
 ---
