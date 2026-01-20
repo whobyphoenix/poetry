@@ -133,17 +133,86 @@ h2.poem-title {
   border-bottom: 1px solid var(--border);
 }
 
-.book-cover {
-  margin-bottom: 2rem;
-  text-align: center;
+/* Cover with text overlay at top */
+.book-header.has-cover {
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  border-bottom: none;
+  margin-bottom: 3rem;
+  border-radius: 4px;
+  /* Maintain 2:3 aspect ratio (height = width * 1.5) */
+  padding-top: 150%;
 }
 
-.book-cover img {
-  max-width: 100%;
-  max-height: 400px;
-  height: auto;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* Subtle gradient overlay for text readability at top */
+.book-header.has-cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: 0;
+}
+
+/* Container for text overlaid on cover */
+.book-header.has-cover .book-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  z-index: 1;
+}
+
+.book-header.has-cover h1,
+.book-header.has-cover .book-author,
+.book-header.has-cover .book-description,
+.book-header.has-cover .download-button {
+  position: relative;
+  z-index: 1;
+}
+
+.book-header.has-cover h1 {
+  color: white;
+  font-size: 1.8rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.book-header.has-cover .book-author {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1rem;
+}
+
+.book-header.has-cover .book-author a {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.book-header.has-cover .book-description {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1rem;
+}
+
+.book-header.has-cover .download-button {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.6);
+  display: inline-block;
+}
+
+.book-header.has-cover .download-button:hover {
+  color: white;
 }
 
 .book-header h1 {

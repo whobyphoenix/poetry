@@ -6,20 +6,17 @@ layout: default
 {% assign book_author = site.authors | where_exp: "a", "a.path contains book_author_id" | first %}
 
 <article class="book">
-  <header class="book-header">
-    {% if page.cover %}
-    <div class="book-cover">
-      <img src="{{ '/assets/images/covers/' | relative_url }}{{ page.cover }}" alt="Cover of {{ page.title }}">
+  <header class="book-header{% if page.cover %} has-cover{% endif %}"{% if page.cover %} style="background-image: url('{{ '/assets/images/covers/' | relative_url }}{{ page.cover }}');"{% endif %}>
+    <div class="book-info">
+      <h1>{{ page.title }}</h1>
+      {% if book_author %}
+      <p class="book-author">by {% if book_author.link %}<a href="{{ book_author.link }}">{{ book_author.name }}</a>{% else %}{{ book_author.name }}{% endif %}</p>
+      {% endif %}
+      {% if page.description %}
+      <p class="book-description">{{ page.description }}</p>
+      {% endif %}
+      <a href="{{ '/downloads/' | relative_url }}{{ book_name }}.epub" class="download-button">↓ Download E-pub</a>
     </div>
-    {% endif %}
-    <h1>{{ page.title }}</h1>
-    {% if book_author %}
-    <p class="book-author">by {% if book_author.link %}<a href="{{ book_author.link }}">{{ book_author.name }}</a>{% else %}{{ book_author.name }}{% endif %}</p>
-    {% endif %}
-    {% if page.description %}
-    <p class="book-description">{{ page.description }}</p>
-    {% endif %}
-    <a href="{{ '/downloads/' | relative_url }}{{ book_name }}.epub" class="download-button">↓ Download E-pub</a>
   </header>
   
   <div class="book-poems">
