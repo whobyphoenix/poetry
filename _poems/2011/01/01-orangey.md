@@ -1,5 +1,5 @@
 ---
-title: "Оранжевостранное."
+poem_title: "Оранжевостранное."
 authors: phoenix
 books: prequel
 date_display: "2011"

@@ -1,5 +1,5 @@
 ---
-title: "Не трогайте меня."
+poem_title: "Не трогайте меня."
 authors: phoenix
 books: prequel
 date_display: "2004-08"

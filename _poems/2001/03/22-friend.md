@@ -1,5 +1,5 @@
 ---
-title: "Подруге Але на день рожденья."
+poem_title: "Подруге Але на день рожденья."
 authors: phoenix
 books: prequel
 text: |

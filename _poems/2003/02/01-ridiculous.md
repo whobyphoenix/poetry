@@ -1,5 +1,5 @@
 ---
-title: "Так."
+poem_title: "Так."
 authors: phoenix
 books: prequel
 date_display: "2003-02"

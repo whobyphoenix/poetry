@@ -1,5 +1,5 @@
 ---
-title: "Зимнее древнее."
+poem_title: "Зимнее древнее."
 authors: phoenix
 books: prequel
 date_display: "2001"
