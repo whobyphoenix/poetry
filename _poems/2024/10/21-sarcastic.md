@@ -10,4 +10,6 @@ text: |
    That's the only logical explanation
    Of how you could possibly ignore
    Such a treasure trove.
+   Unless I'm being misled,
+   And you're not as big of a fool as that.
 ---
