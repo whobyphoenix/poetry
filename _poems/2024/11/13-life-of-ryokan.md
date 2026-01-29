@@ -7,7 +7,6 @@ text: |
    Climbing up the mountains,
    Off into the sky.
 commentary: |
-   "ura wo mise / omote wo misete / chiru momiji" by Ryōkan.
    An iterative self-interference...
    Since forever I had this vision
    in my mind for the same,
