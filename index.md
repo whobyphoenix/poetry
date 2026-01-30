@@ -1,13 +1,10 @@
 ---
 layout: default
 ---
-{% assign published_poems = site.poems | where_exp: "poem", "poem.books != nil and poem.books != '' and poem.book != nil and poem.book != ''" %}
-{% comment %}Handle both 'books' and 'book' fields{% endcomment %}
 {% assign all_poems = site.poems %}
 {% assign published_poems = "" | split: "" %}
 {% for poem in all_poems %}
-  {% assign has_books = poem.books | default: poem.book | default: "" %}
-  {% if has_books != "" %}
+  {% if poem.books and poem.books != "" %}
     {% assign published_poems = published_poems | push: poem %}
   {% endif %}
 {% endfor %}
@@ -23,8 +20,7 @@ layout: default
 
 <article class="poem">
   <header class="poem-header">
-    {% assign has_books = latest.books | default: latest.book | default: "" %}
-    {% assign book_list = has_books | split: ', ' %}
+    {% assign book_list = latest.books | split: ', ' %}
     {% assign first_book_id = book_list | first | strip %}
     {% assign first_book = site.books | where_exp: "b", "b.path contains first_book_id" | first %}
     {% assign poem_title = latest.poem_title | default: first_book.default_poem_title | default: "..." %}
@@ -66,11 +62,10 @@ layout: default
 {{ latest.text }}
   </div>
   
-  {% assign has_books = latest.books | default: latest.book | default: "" %}
-  {% if has_books != "" %}
+  {% if latest.books and latest.books != "" %}
   <footer class="poem-footer">
-    <span class="in-books">In: 
-      {% assign book_list = has_books | split: ', ' %}
+    <span class="in-books">In:
+      {% assign book_list = latest.books | split: ', ' %}
       {% for book_id in book_list %}
         {% assign book_id_stripped = book_id | strip %}
         {% assign book = site.books | where_exp: "b", "b.path contains book_id_stripped" | first %}
@@ -89,7 +84,8 @@ layout: default
 <section class="books-section">
   <h2>Books</h2>
   <ul class="books-list">
-    {% for book in site.books %}
+    {% assign sorted_books = site.books | sort: "date" | reverse %}
+    {% for book in sorted_books %}
     {% assign book_name = book.path | split: '/' | last | split: '.' | first %}
     <li>
       <a href="{{ book.url | relative_url }}">{{ book.title }}</a>

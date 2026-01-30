@@ -23,6 +23,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Validate content
+        run: python3 scripts/validate.py
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -37,16 +48,8 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
       - name: Install Pandoc
         run: sudo apt-get install -y pandoc
-
-      - name: Install PyYAML
-        run: pip install pyyaml
 
       - name: Generate E-pubs
         run: python3 scripts/generate_epubs.py _site/downloads
