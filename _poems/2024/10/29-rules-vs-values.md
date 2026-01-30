@@ -62,10 +62,19 @@ text: |
    In me, it is defined with tiers:
    1st tier values are about other people
    as in sentient beings:
-   your happiness, someone's life, someone's freedom.
+   my beloved's happiness, someone's life, someone's freedom.
    2nd tier values are about mental constructs,
    seemingly abstract yet important,
    like the truth or justice.
    3rd tier: self-improvement, my freedom, my life.
    4th tier: non-sentient beings, etc.
+commentary: |
+   Actually, these days it's more like this:
+   objective Truth >>
+   Tony’s happiness >>
+   Freedoms > Justice > Peace >>
+   a human life >>
+   my happiness > my freedom > my life >>
+   other living beings >>
+   other stuff.
 ---
