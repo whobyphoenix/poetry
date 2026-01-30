@@ -20,7 +20,7 @@ layout: default
   </header>
   
   <div class="book-poems">
-    {% assign book_poems = site.poems | where_exp: "poem", "poem.books contains book_name or poem.book == book_name" %}
+    {% assign book_poems = site.poems | where_exp: "poem", "poem.books contains book_name" %}
     {% assign sorted_poems = book_poems | sort: "path" %}
     {% for poem in sorted_poems %}
       {% assign path_parts = poem.path | split: '/' %}
