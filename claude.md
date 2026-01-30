@@ -9,8 +9,10 @@ A minimalist poetry website built with Jekyll and GitHub Pages.
 
 - **Static site generator:** Jekyll (hosted on GitHub Pages)
 - **E-pub generation:** Python script using Pandoc (runs in GitHub Actions)
+- **Content validation:** Python script enforcing mandatory fields (runs in GitHub Actions, before build)
 - **Deployment:** Automatic via GitHub Actions on push to `main`
 - **Text rendering:** Raw text from YAML with CSS whitespace preservation (no Markdown processing)
+- **Build philosophy:** Fail fast. The CI pipeline validates content consistency before building. When adding new features, corresponding validation rules must be added to `scripts/validate.py`.
 
 ## Text Rendering Philosophy
 
@@ -39,6 +41,7 @@ assets/
     illustrations/            # Poem illustrations (future)
 index.md                      # Homepage (latest poem + book list)
 scripts/generate_epubs.py     # E-pub generation script
+scripts/validate.py           # Content validation (mandatory fields, known references)
 .github/workflows/deploy.yml  # CI/CD pipeline
 _config.yml                   # Jekyll configuration
 ```
@@ -75,20 +78,25 @@ commentary: |                     # Optional footnote-style text after poem
 ---
 title: "Book Display Title"
 author: phoenix                   # References _authors/phoenix.md
+date: 2024-07-21                  # Publication date (YYYY-MM-DD); determines homepage ordering
 default_poem_title: "..."         # Used when poem has no poem_title
 cover: book-cover.jpg             # Optional cover image (filename in assets/images/covers/)
 ---
 ```
 
+**Mandatory fields:** `title`, `author`, `date`. Validated by CI — build fails if missing or invalid.
+
 **Filename is the book identifier** — poems reference it via `books: filename-without-extension`
+
+**Date field:** The `date` is displayed on the homepage (full date next to each book title), on the book page header (between author and download link), and in the EPUB metadata (`dc:date`). Books on the homepage are sorted by date, most recent first.
 
 **Cover images:** Optional. If specified, the image should be placed in `assets/images/covers/` and referenced by filename only. Recommended specs: 1600×2400px (2:3 ratio), JPEG, under 500KB. The cover will display on both the web book page and in the generated EPUB.
 
 **Web display:** Cover images are displayed as full-width background images with text overlaid at the top. The layout uses:
 - `background-size: contain` to show the full image without cropping
 - `padding-top: 150%` to maintain the 2:3 aspect ratio
-- Gradient overlay at the top for text readability (title, author, download link appear in white with text shadows)
-- Book title, author name, and download link are positioned absolutely over the cover
+- Gradient overlay at the top for text readability (title, author, date, download link appear in white with text shadows)
+- Book title, author name, date, and download link are positioned absolutely over the cover
 
 **EPUB display:** Cover images are added via Pandoc's `--epub-cover-image` flag. EPUBs display the cover as the first page, followed by an auto-generated title page with book title and author.
 
@@ -115,7 +123,7 @@ Books have a single author. Per-poem attribution follows these rules:
 
 ## Site Structure
 
-- **Homepage (`/`):** Latest published poem + list of all books with epub download links
+- **Homepage (`/`):** Latest published poem + list of all books (sorted by date, most recent first) with dates and epub download links
 - **Book pages (`/books/slug/`):** Full text of all poems in the book (like an e-reader)
 - **No individual poem pages** — poems are only viewable within their book context
 - **No author pages** — author names link to external URLs
@@ -155,7 +163,32 @@ All favicon tags are included in `_layouts/default.html` in the `<head>` section
 
 **E-pub metadata includes:**
 - Book title and author (from book's `author:` field)
+- Publication date (from book's `date:` field) — passed to Pandoc via `--metadata date=`, maps to `dc:date` in EPUB OPF
 - Cover image (if `cover:` field is set in book metadata) — passed to Pandoc via `--epub-cover-image`
+
+## Content Validation
+
+`scripts/validate.py` runs during GitHub Actions build, **before** Jekyll build. The build fails fast if any checks fail.
+
+**Mandatory fields:**
+
+| Collection | Mandatory | Validated against |
+|---|---|---|
+| Authors | `name` | — |
+| Books | `title`, `author`, `date` | `author` must reference a known `_authors/` file; `date` must be valid YYYY-MM-DD |
+| Poems (published) | `authors`, `books`, `text` | `authors` and `books` must reference known `_authors/` and `_books/` files |
+
+Poems without `books` are drafts — no validation is applied to them.
+
+**Unknown field detection:** Only explicitly allowed fields are permitted in frontmatter. Any unrecognized field name causes a build failure.
+
+| Collection | Allowed fields |
+|---|---|
+| Authors | `name`, `link` |
+| Books | `title`, `author`, `date`, `default_poem_title`, `cover` |
+| Poems | `poem_title`, `authors`, `books`, `date_display`, `text`, `commentary` |
+
+**Important:** When adding new features that introduce new frontmatter fields, the allowed-fields lists in `scripts/validate.py` must be updated, and appropriate consistency checks for the new fields must be added.
 
 ## Jekyll Configuration Notes
 
@@ -206,6 +239,7 @@ text: |
 ---
 title: "New Book Title"
 author: phoenix
+date: 2026-01-30
 default_poem_title: "..."
 cover: new-book-cover.jpg  # Optional
 ---
@@ -249,7 +283,7 @@ link: "https://claude.ai/"
 ## Tech Stack Versions
 
 - Jekyll 4.x
-- Python 3.11 + PyYAML (for EPUB generation)
+- Python 3.11 + PyYAML (for content validation and EPUB generation)
 - Pandoc (system package)
 - GitHub Pages with GitHub Actions deployment
 
@@ -280,3 +314,12 @@ link: "https://claude.ai/"
 - Generated multiple formats/sizes for cross-platform support
 - Includes SVG (modern browsers), ICO (legacy), PNG variants, and web app manifest
 - Stored in `assets/images/favicon/` directory
+
+**Book date and content validation (January 2026):**
+- Added mandatory `date` field (YYYY-MM-DD) to book metadata for publication date
+- Homepage books list sorted by date (most recent first), with full date displayed
+- Book page header shows date between author and download link
+- EPUB metadata includes publication date via `dc:date`
+- Added `scripts/validate.py` — CI validation that enforces mandatory fields and rejects unknown fields
+- Adopted fail-fast build philosophy: validation runs before Jekyll build, build fails on any inconsistency
+- Removed legacy `book` (singular) fallback — only `books` is accepted in poem frontmatter
