@@ -12,6 +12,9 @@ layout: default
       {% if book_author %}
       <p class="book-author">by {% if book_author.link %}<a href="{{ book_author.link }}">{{ book_author.name }}</a>{% else %}{{ book_author.name }}{% endif %}</p>
       {% endif %}
+      {% if page.date %}
+      <p class="book-date">{{ page.date | date: "%B %-d, %Y" }}</p>
+      {% endif %}
       {% if page.description %}
       <p class="book-description">{{ page.description }}</p>
       {% endif %}

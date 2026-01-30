@@ -106,10 +106,14 @@ def get_book_metadata():
             content = book_file.read_text(encoding='utf-8')
             meta = parse_frontmatter(content)
             name = book_file.stem  # filename without extension
+            date_value = meta.get('date', '')
+            if hasattr(date_value, 'isoformat'):
+                date_value = date_value.isoformat()
             books[name] = {
                 'title': meta.get('title', name),
                 'description': meta.get('description', ''),
                 'author': meta.get('author', ''),
+                'date': str(date_value),
                 'default_poem_title': meta.get('default_poem_title', '...'),
                 'cover': meta.get('cover', '')
             }
@@ -289,6 +293,11 @@ def generate_epub(book_name, book_meta, poems, author_meta, output_dir):
     ]
     if book_author_name:
         cmd.extend(['--metadata', f'author={book_author_name}'])
+
+    # Add publication date
+    book_date = book_meta.get('date', '')
+    if book_date:
+        cmd.extend(['--metadata', f'date={book_date}'])
 
     # Add cover image if specified
     if cover_filename:

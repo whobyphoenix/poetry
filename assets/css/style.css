@@ -176,6 +176,7 @@ h2.poem-title {
 
 .book-header.has-cover h1,
 .book-header.has-cover .book-author,
+.book-header.has-cover .book-date,
 .book-header.has-cover .book-description,
 .book-header.has-cover .download-button {
   position: relative;
@@ -191,6 +192,12 @@ h2.poem-title {
 
 .book-header.has-cover .book-author {
   color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.6);
+  margin-bottom: 0.3rem;
+}
+
+.book-header.has-cover .book-date {
+  color: rgba(255, 255, 255, 0.85);
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.6);
   margin-bottom: 1rem;
 }
@@ -223,6 +230,13 @@ h2.poem-title {
 
 .book-author {
   font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 0.3rem;
+}
+
+.book-date {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
   color: var(--text-light);
   margin-bottom: 0.5rem;
 }
@@ -286,6 +300,13 @@ h2.poem-title {
 
 .books-list li {
   padding: 0.5rem 0;
+}
+
+.books-list .book-date {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-left: 0.75rem;
 }
 
 .books-list .download-link {
