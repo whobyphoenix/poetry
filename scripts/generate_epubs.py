@@ -66,7 +66,7 @@ def get_poems():
         title = meta.get('poem_title', '')
 
         # Get books (can be comma-separated, support both 'book' and 'books')
-        books_str = meta.get('books', meta.get('book', ''))
+        books_str = meta.get('books', '')
         books = [b.strip() for b in books_str.split(',') if b.strip()]
 
         # Skip poems without books (drafts)

@@ -2,15 +2,22 @@
 """
 Validate mandatory fields across the poetry archive.
 
-Authors: name must be defined.
-Books: title, author, and date must have valid values.
+Authors: name must be defined. Only known fields: name, link.
+Books: title, author, and date must have valid values. Only known fields:
+       title, author, date, default_poem_title, cover.
 Poems (published only): books, authors, and text must have valid values.
+       Only known fields: poem_title, authors, books, date_display, text, commentary.
 """
 
 import re
 import sys
 import yaml
 from pathlib import Path
+
+
+AUTHOR_FIELDS = {'name', 'link'}
+BOOK_FIELDS = {'title', 'author', 'date', 'default_poem_title', 'cover'}
+POEM_FIELDS = {'poem_title', 'authors', 'books', 'date_display', 'text', 'commentary'}
 
 
 def parse_frontmatter(content):
@@ -27,6 +34,14 @@ def parse_frontmatter(content):
         return frontmatter if frontmatter else {}
     except yaml.YAMLError as e:
         return None
+
+
+def check_unknown_fields(meta, allowed, file_label):
+    """Return errors for any fields not in the allowed set."""
+    unknown = set(meta.keys()) - allowed
+    if unknown:
+        return [f"{file_label}: unknown field(s): {', '.join(sorted(unknown))}"]
+    return []
 
 
 def validate_authors(authors_dir):
@@ -47,6 +62,8 @@ def validate_authors(authors_dir):
         if meta is None:
             errors.append(f"_authors/{author_id}.md: invalid or missing frontmatter")
             continue
+
+        errors.extend(check_unknown_fields(meta, AUTHOR_FIELDS, f"_authors/{author_id}.md"))
 
         name = meta.get('name', '')
         if not isinstance(name, str) or not name.strip():
@@ -84,6 +101,8 @@ def validate_books(books_dir, known_authors):
         if meta is None:
             errors.append(f"_books/{book_id}.md: invalid or missing frontmatter")
             continue
+
+        errors.extend(check_unknown_fields(meta, BOOK_FIELDS, f"_books/{book_id}.md"))
 
         # title: non-empty string
         title = meta.get('title', '')
@@ -130,8 +149,10 @@ def validate_poems(poems_dir, known_authors, known_books):
             errors.append(f"{rel_path}: invalid or missing frontmatter")
             continue
 
+        errors.extend(check_unknown_fields(meta, POEM_FIELDS, str(rel_path)))
+
         # Check if published (has books field)
-        books_str = meta.get('books', meta.get('book', ''))
+        books_str = meta.get('books', '')
         if not books_str:
             continue  # Draft, skip validation
 
