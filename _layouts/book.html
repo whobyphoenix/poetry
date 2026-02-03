@@ -101,4 +101,18 @@ layout: default
     </section>
     {% endfor %}
   </div>
+
+  <button class="scroll-to-top" aria-label="Scroll to top">↑</button>
 </article>
+
+<script>
+(function() {
+  var btn = document.querySelector('.scroll-to-top');
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
