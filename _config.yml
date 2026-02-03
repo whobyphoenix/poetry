@@ -22,6 +22,9 @@ defaults:
     values:
       layout: "book"
 
+plugins:
+  - jekyll-sitemap
+
 exclude:
   - scripts/
   - Gemfile
