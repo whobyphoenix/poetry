@@ -6,7 +6,7 @@ text: |
   While the "Heaven Sent"
   Is the most profound,
   The one with the fireplace
-  Is beautiful and said all around.
+  Is beautiful and sad all around.
   It's seven years of bad luck,
   Says every clock,
   When a mirror breaks,
