@@ -32,7 +32,7 @@ _books/*.md                   # Book definitions
 _authors/*.md                 # Author definitions
 _layouts/
   default.html                # Base template
-  book.html                   # Book page template
+  book.html                   # Book page template (includes scroll-to-top button)
 assets/
   css/style.css               # Styles (Lora + Inter fonts)
   images/
@@ -40,10 +40,12 @@ assets/
     favicon/                  # Favicon files (multiple sizes/formats)
     illustrations/            # Poem illustrations (future)
 index.md                      # Homepage (latest poem + book list)
+404.html                      # Custom 404 error page
+robots.txt                    # Search engine crawler rules
 scripts/generate_epubs.py     # E-pub generation script
 scripts/validate.py           # Content validation (mandatory fields, known references)
 .github/workflows/deploy.yml  # CI/CD pipeline
-_config.yml                   # Jekyll configuration
+_config.yml                   # Jekyll configuration (includes jekyll-sitemap plugin)
 ```
 
 ## Poem File Format
@@ -323,3 +325,9 @@ link: "https://claude.ai/"
 - Added `scripts/validate.py` — CI validation that enforces mandatory fields and rejects unknown fields
 - Adopted fail-fast build philosophy: validation runs before Jekyll build, build fails on any inconsistency
 - Removed legacy `book` (singular) fallback — only `books` is accepted in poem frontmatter
+
+**SEO and UX improvements (February 2026):**
+- Added `robots.txt` allowing all crawlers
+- Added `jekyll-sitemap` plugin for automatic sitemap.xml generation
+- Added custom `404.html` error page
+- Added scroll-to-top button on book pages (appears after scrolling down)
