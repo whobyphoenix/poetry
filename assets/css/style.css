@@ -330,18 +330,52 @@ footer {
   color: var(--text-light);
 }
 
+/* Scroll to top button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text-light);
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, color 0.2s, border-color 0.2s;
+  z-index: 100;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   main {
     padding: 2rem 1.25rem;
   }
-  
+
   .poem-meta {
     display: block;
   }
-  
+
   .poem-meta time::after {
     content: "";
     display: block;
+  }
+
+  .scroll-to-top {
+    bottom: 1.25rem;
+    right: 1.25rem;
   }
 }
