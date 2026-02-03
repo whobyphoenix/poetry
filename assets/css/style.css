@@ -330,6 +330,22 @@ footer {
   color: var(--text-light);
 }
 
+/* Error page */
+.error-page {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.error-page h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.error-page p {
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
 /* Scroll to top button */
 .scroll-to-top {
   position: fixed;
