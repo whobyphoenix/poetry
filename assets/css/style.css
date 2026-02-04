@@ -131,8 +131,7 @@ h2.poem-title {
 }
 
 .poem-commentary {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
+  margin-top: 0.75rem;
   font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   color: var(--text-light);
@@ -141,10 +140,11 @@ h2.poem-title {
 }
 
 .poem-footer {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
   font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   color: var(--text-light);
+  text-align: left;
 }
 
 /* Book page header */
