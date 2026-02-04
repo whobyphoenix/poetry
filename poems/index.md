@@ -3,30 +3,35 @@ layout: default
 title: All Poems
 ---
 
+{% assign all_poems = site.poems %}
+{% assign published_poems = "" | split: "" %}
+{% for poem in all_poems %}
+  {% if poem.books and poem.books != "" %}
+    {% assign published_poems = published_poems | push: poem %}
+  {% endif %}
+{% endfor %}
+{% assign sorted_poems = published_poems | sort: "path" %}
+
+{% assign years = "" | split: "" %}
+{% for poem in sorted_poems %}
+  {% assign path_parts = poem.path | split: '/' %}
+  {% assign year = path_parts[1] %}
+  {% unless years contains year %}
+    {% assign years = years | push: year %}
+  {% endunless %}
+{% endfor %}
+
 <header class="poems-page-header">
-  <h1>All Poems</h1>
-  <p class="poems-count">
-    {% assign all_poems = site.poems %}
-    {% assign published_poems = "" | split: "" %}
-    {% for poem in all_poems %}
-      {% if poem.books and poem.books != "" %}
-        {% assign published_poems = published_poems | push: poem %}
-      {% endif %}
+  <nav class="year-nav">
+    {% for year in years %}
+      <a href="#year-{{ year }}">{{ year }}</a>{% unless forloop.last %} · {% endunless %}
     {% endfor %}
-    {{ published_poems.size }} poems
-  </p>
+  </nav>
+  <p class="poems-count">{{ published_poems.size }} poems</p>
 </header>
 
 <div class="book-poems">
-  {% assign all_poems = site.poems %}
-  {% assign published_poems = "" | split: "" %}
-  {% for poem in all_poems %}
-    {% if poem.books and poem.books != "" %}
-      {% assign published_poems = published_poems | push: poem %}
-    {% endif %}
-  {% endfor %}
-  {% assign sorted_poems = published_poems | sort: "path" %}
-
+  {% assign current_year = "" %}
   {% for poem in sorted_poems %}
     {% assign path_parts = poem.path | split: '/' %}
     {% assign year = path_parts[1] %}
@@ -38,7 +43,14 @@ title: All Poems
     {% assign first_book_id = book_list | first | strip %}
     {% assign first_book = site.books | where_exp: "b", "b.path contains first_book_id" | first %}
 
-  <section class="book-poem">
+    {% if year != current_year %}
+      {% assign current_year = year %}
+      {% assign year_anchor = true %}
+    {% else %}
+      {% assign year_anchor = false %}
+    {% endif %}
+
+  <section class="book-poem"{% if year_anchor %} id="year-{{ year }}"{% endif %}>
     <header class="poem-header">
       {% assign poem_title = poem.poem_title | default: first_book.default_poem_title | default: "..." %}
       <h2 class="poem-title">{{ poem_title }}</h2>

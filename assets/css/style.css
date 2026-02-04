@@ -291,10 +291,19 @@ h2.poem-title {
   border-bottom: 1px solid var(--border);
 }
 
-.poems-page-header h1 {
-  font-size: 1.5rem;
-  font-weight: 500;
+.year-nav {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
   margin-bottom: 0.3rem;
+}
+
+.year-nav a {
+  color: var(--text);
+}
+
+.year-nav a:hover {
+  color: var(--accent);
 }
 
 .poems-count {
