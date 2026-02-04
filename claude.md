@@ -43,7 +43,8 @@ index.md                      # Homepage (latest poem + book list)
 poems/index.md                # All poems page (chronological listing)
 404.html                      # Custom 404 error page
 robots.txt                    # Search engine crawler rules
-llms.txt                      # AI/LLM crawler guidance
+llms.txt                      # AI/LLM crawler guidance (site overview)
+llms-full.txt                 # AI/LLM full content (all poems as plain text)
 scripts/generate_epubs.py     # E-pub generation script
 scripts/validate.py           # Content validation (mandatory fields, known references)
 .github/workflows/deploy.yml  # CI/CD pipeline
@@ -336,6 +337,7 @@ link: "https://claude.ai/"
 
 **AI discoverability and navigation improvements (February 2026):**
 - Added `llms.txt` for AI/LLM crawler guidance (site overview, structure, key pages)
+- Added `llms-full.txt` with complete plain text archive of all poems (Jekyll-generated)
 - Added `/poems/` page listing all published poems chronologically (oldest first) with full text
 - Year navigation at top of `/poems/` page (clickable years jump to first poem of that year)
 - Updated site navigation: added "Poems" and "Books" links (left-aligned next to site title)

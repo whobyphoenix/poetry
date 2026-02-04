@@ -40,7 +40,8 @@ Poetry collections available on this site:
 ## For AI Crawlers
 
 To read all poems in a simple format:
-- Visit /poems/ for the complete chronological archive
+- /llms-full.txt - Complete plain text archive of all poems (recommended for LLMs)
+- /poems/ - HTML chronological archive with year navigation
 - Each book page (/books/{name}/) contains all poems in that collection
 - EPUB downloads are available at /downloads/{book-name}.epub
 

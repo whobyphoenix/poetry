@@ -1,0 +1,56 @@
+---
+layout: null
+---
+# Natalia Pavlova's Poetry Archive - Complete Poems
+
+All poems in chronological order (oldest first).
+For site navigation and structure, see: /llms.txt
+
+{% assign all_poems = site.poems %}
+{% assign published_poems = "" | split: "" %}
+{% for poem in all_poems %}
+{% if poem.books and poem.books != "" %}
+{% assign published_poems = published_poems | push: poem %}
+{% endif %}
+{% endfor %}
+{% assign sorted_poems = published_poems | sort: "path" %}
+{% assign years = "" | split: "" %}
+{% for poem in sorted_poems %}
+{% assign path_parts = poem.path | split: '/' %}
+{% assign year = path_parts[1] %}
+{% unless years contains year %}
+{% assign years = years | push: year %}
+{% endunless %}
+{% endfor %}
+Total poems: {{ published_poems.size }}
+Years: {{ years | first }}–{{ years | last }}
+
+================================================================================
+{% assign current_year = "" %}
+{% for poem in sorted_poems %}
+{% assign path_parts = poem.path | split: '/' %}
+{% assign year = path_parts[1] %}
+{% assign month = path_parts[2] %}
+{% assign filename = path_parts[3] | split: '-' %}
+{% assign day = filename[0] %}
+{% assign book_list = poem.books | split: ', ' %}
+{% assign first_book_id = book_list | first | strip %}
+{% assign first_book = site.books | where_exp: "b", "b.path contains first_book_id" | first %}
+{% if year != current_year %}
+{% assign current_year = year %}
+
+## {{ year }}
+{% endif %}
+
+--------------------------------------------------------------------------------
+
+{% assign poem_title = poem.poem_title | default: first_book.default_poem_title | default: "..." %}
+{{ poem_title }}
+{% if poem.date_display %}{{ poem.date_display }}{% else %}{% assign month_num = month | plus: 0 %}{% case month_num %}{% when 1 %}January{% when 2 %}February{% when 3 %}March{% when 4 %}April{% when 5 %}May{% when 6 %}June{% when 7 %}July{% when 8 %}August{% when 9 %}September{% when 10 %}October{% when 11 %}November{% when 12 %}December{% endcase %} {{ day | plus: 0 }}, {{ year }}{% endif %} · {% assign author_list = poem.authors | split: ', ' %}{% for author_id in author_list %}{% assign author_id_stripped = author_id | strip %}{% assign author = site.authors | where_exp: "a", "a.path contains author_id_stripped" | first %}{% if author %}{{ author.name }}{% else %}{{ author_id_stripped }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
+
+Book: {{ first_book.title }}
+
+{{ poem.text }}{% if poem.commentary %}
+(Commentary: {{ poem.commentary | strip }})
+{% endif %}
+{% endfor %}
