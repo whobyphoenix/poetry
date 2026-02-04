@@ -1,6 +1,6 @@
-# Phoenix Poetry Archive
+# Natalia Pavlova's Poetry Archive
 
-> Personal poetry website by Phoenix. Poems preserved in time.
+> A poetry website, most are by Phoenix (Natalia Pavlova)
 
 This is a minimalist poetry archive containing original poems organized into books. The site is built with Jekyll and hosted on GitHub Pages.
 
@@ -20,15 +20,15 @@ This is a minimalist poetry archive containing original poems organized into boo
 
 Poetry collections available on this site:
 
-- /books/drowning-admiration/ - "Drowning in Admiration" (Russian)
+- /books/drowning-admiration/ - "Восхищение тонущего красотой океана"
 - /books/flashlight-in-the-dark/ - "A Flashlight in the Dark"
-- /books/strange-days-shards/ - "Strange Days' Shards"
-- /books/unmeltable-mist/ - "Unmeltable Mist"
 - /books/weird-fishes/ - "Weird Fishes"
-- /books/cobwebs-experiments/ - "Cobweb's Experiments"
+- /books/unmeltable-mist/ - "Unmeltable Mist"
 - /books/unsinkable/ - "Unsinkable"
+- /books/prequel/ - "Prequel"
+- /books/strange-days-shards/ - "Strange Days' Shards"
+- /books/cobwebs-experiments/ - "Cobweb's Experiments"
 - /books/lengthies/ - "Lengthies" (longer poems)
-- /books/prequel/ - "Prequel" (Russian)
 
 ## Content Format
 
@@ -44,9 +44,9 @@ To read all poems in a simple format:
 - Each book page (/books/{name}/) contains all poems in that collection
 - EPUB downloads are available at /downloads/{book-name}.epub
 
-## Author
+## Authors
 
-Phoenix - https://bsky.app/profile/whobyphoenix.com
+Phoenix (Natalia Pavlova) - https://bsky.app/profile/whobyphoenix.com
 
 ## Technical Details
 
