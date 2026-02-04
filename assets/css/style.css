@@ -141,6 +141,8 @@ h2.poem-title {
 
 .poem-footer {
   margin-top: 0.5rem;
+  padding: 0;
+  border: none;
   font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   color: var(--text-light);
