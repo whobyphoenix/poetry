@@ -27,7 +27,6 @@ title: All Poems
       <a href="#year-{{ year }}">{{ year }}</a>{% unless forloop.last %} · {% endunless %}
     {% endfor %}
   </nav>
-  <p class="poems-count">{{ published_poems.size }} poems</p>
 </header>
 
 <div class="book-poems">

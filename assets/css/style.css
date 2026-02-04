@@ -295,7 +295,6 @@ h2.poem-title {
   font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
   line-height: 1.8;
-  margin-bottom: 0.3rem;
 }
 
 .year-nav a {
@@ -304,12 +303,6 @@ h2.poem-title {
 
 .year-nav a:hover {
   color: var(--accent);
-}
-
-.poems-count {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  color: var(--text-light);
 }
 
 /* Book poems list */
