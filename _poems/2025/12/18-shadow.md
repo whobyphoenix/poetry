@@ -1,7 +1,7 @@
 ---
 poem_title: "The Shadow."
 authors: phoenix
-books: poems
+books: lengthies
 text: |
   My dear, oh so dear friend,
   I'm ill, oh so very ill.

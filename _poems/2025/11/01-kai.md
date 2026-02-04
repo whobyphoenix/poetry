@@ -1,7 +1,7 @@
 ---
 poem_title: "The Kai’s Story."
 authors: phoenix
-books: poems
+books: lengthies
 text: |
   ((Roses flower in the vale;
   there we hear the northern tale…))

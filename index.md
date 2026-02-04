@@ -81,7 +81,7 @@ layout: default
 </article>
 {% endif %}
 
-<section class="books-section">
+<section id="books" class="books-section">
   <h2>Books</h2>
   <ul class="books-list">
     {% assign sorted_books = site.books | sort: "date" | reverse %}

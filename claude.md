@@ -40,8 +40,10 @@ assets/
     favicon/                  # Favicon files (multiple sizes/formats)
     illustrations/            # Poem illustrations (future)
 index.md                      # Homepage (latest poem + book list)
+poems/index.md                # All poems page (chronological listing)
 404.html                      # Custom 404 error page
 robots.txt                    # Search engine crawler rules
+llms.txt                      # AI/LLM crawler guidance
 scripts/generate_epubs.py     # E-pub generation script
 scripts/validate.py           # Content validation (mandatory fields, known references)
 .github/workflows/deploy.yml  # CI/CD pipeline
@@ -126,9 +128,11 @@ Books have a single author. Per-poem attribution follows these rules:
 ## Site Structure
 
 - **Homepage (`/`):** Latest published poem + list of all books (sorted by date, most recent first) with dates and epub download links
+- **All Poems (`/poems/`):** Chronological listing of all published poems with full text (most recent first), each with link to its book
 - **Book pages (`/books/slug/`):** Full text of all poems in the book (like an e-reader)
-- **No individual poem pages** — poems are only viewable within their book context
+- **No individual poem pages** — poems are only viewable within their book context or on /poems/
 - **No author pages** — author names link to external URLs
+- **Navigation:** Site title (home) + "Poems" link (/poems/) + "Books" link (/#books anchor)
 
 ## Site Branding
 
@@ -331,3 +335,10 @@ link: "https://claude.ai/"
 - Added `jekyll-sitemap` plugin for automatic sitemap.xml generation
 - Added custom `404.html` error page
 - Added scroll-to-top button on book pages (appears after scrolling down)
+
+**AI discoverability and navigation improvements (February 2026):**
+- Added `llms.txt` for AI/LLM crawler guidance (site overview, structure, key pages)
+- Added `/poems/` page listing all published poems chronologically with full text
+- Updated navigation: added "Poems" and "Books" links in site header
+- "Books" link jumps to `/#books` anchor on homepage
+- Renamed "Poems." book to "Lengthies." to avoid confusion with the new /poems/ page

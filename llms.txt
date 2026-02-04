@@ -1,0 +1,55 @@
+# Phoenix Poetry Archive
+
+> Personal poetry website by Phoenix. Poems preserved in time.
+
+This is a minimalist poetry archive containing original poems organized into books. The site is built with Jekyll and hosted on GitHub Pages.
+
+## Site Structure
+
+- Homepage: / (displays the latest poem and a list of all books)
+- All Poems: /poems/ (chronological listing of all published poems with full text)
+- Book Pages: /books/{book-name}/ (full text of all poems in a book)
+- Downloads: /downloads/{book-name}.epub (e-book versions)
+
+## Navigation
+
+- /poems/ - All poems in chronological order (most recent first)
+- /#books - Jump to books list on homepage
+
+## Books
+
+Poetry collections available on this site:
+
+- /books/drowning-admiration/ - "Drowning in Admiration" (Russian)
+- /books/flashlight-in-the-dark/ - "A Flashlight in the Dark"
+- /books/strange-days-shards/ - "Strange Days' Shards"
+- /books/unmeltable-mist/ - "Unmeltable Mist"
+- /books/weird-fishes/ - "Weird Fishes"
+- /books/cobwebs-experiments/ - "Cobweb's Experiments"
+- /books/unsinkable/ - "Unsinkable"
+- /books/lengthies/ - "Lengthies" (longer poems)
+- /books/prequel/ - "Prequel" (Russian)
+
+## Content Format
+
+- Poems are displayed with preserved whitespace and line breaks
+- Each poem shows: title, date, author(s), and the book it belongs to
+- Some poems include commentary (footnote-style notes)
+- E-books (EPUB format) are available for each book
+
+## For AI Crawlers
+
+To read all poems in a simple format:
+- Visit /poems/ for the complete chronological archive
+- Each book page (/books/{name}/) contains all poems in that collection
+- EPUB downloads are available at /downloads/{book-name}.epub
+
+## Author
+
+Phoenix - https://bsky.app/profile/whobyphoenix.com
+
+## Technical Details
+
+- Static site generated with Jekyll
+- Hosted on GitHub Pages
+- Source: https://github.com/whobyphoenix/poetry
