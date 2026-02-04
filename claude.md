@@ -128,7 +128,7 @@ Books have a single author. Per-poem attribution follows these rules:
 ## Site Structure
 
 - **Homepage (`/`):** Latest published poem + list of all books (sorted by date, most recent first) with dates and epub download links
-- **All Poems (`/poems/`):** Chronological listing of all published poems with full text (most recent first), each with link to its book
+- **All Poems (`/poems/`):** Chronological listing of all published poems (oldest first) with year navigation links at top
 - **Book pages (`/books/slug/`):** Full text of all poems in the book (like an e-reader)
 - **No individual poem pages** — poems are only viewable within their book context or on /poems/
 - **No author pages** — author names link to external URLs
@@ -210,9 +210,7 @@ Poems without `books` are drafts — no validation is applied to them.
 }
 
 .poem-commentary {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
+  margin-top: 0.75rem;
   font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   color: var(--text-light);
@@ -338,7 +336,10 @@ link: "https://claude.ai/"
 
 **AI discoverability and navigation improvements (February 2026):**
 - Added `llms.txt` for AI/LLM crawler guidance (site overview, structure, key pages)
-- Added `/poems/` page listing all published poems chronologically with full text
-- Updated navigation: added "Poems" and "Books" links in site header
+- Added `/poems/` page listing all published poems chronologically (oldest first) with full text
+- Year navigation at top of `/poems/` page (clickable years jump to first poem of that year)
+- Updated site navigation: added "Poems" and "Books" links (left-aligned next to site title)
 - "Books" link jumps to `/#books` anchor on homepage
 - Renamed "Poems." book to "Lengthies." to avoid confusion with the new /poems/ page
+- Fixed `.poem-footer` inheriting styles from global `footer` rule (border, padding, centering)
+- Tightened spacing between poem text, commentary, and "In: books" footer
