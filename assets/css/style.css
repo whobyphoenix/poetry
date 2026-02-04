@@ -39,8 +39,8 @@ a:hover {
 
 .site-nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 2rem;
 }
 
 .site-title {
@@ -141,7 +141,7 @@ h2.poem-title {
 }
 
 .poem-footer {
-  margin-top: 1.5rem;
+  margin-top: 0.75rem;
   font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   color: var(--text-light);
@@ -309,7 +309,7 @@ h2.poem-title {
 }
 
 .book-poem {
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--border);
 }
 

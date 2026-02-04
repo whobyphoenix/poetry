@@ -25,7 +25,7 @@ title: All Poems
       {% assign published_poems = published_poems | push: poem %}
     {% endif %}
   {% endfor %}
-  {% assign sorted_poems = published_poems | sort: "path" | reverse %}
+  {% assign sorted_poems = published_poems | sort: "path" %}
 
   {% for poem in sorted_poems %}
     {% assign path_parts = poem.path | split: '/' %}
