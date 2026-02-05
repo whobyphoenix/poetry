@@ -28,6 +28,7 @@ Poetry collections available on this site:
 - /books/prequel/ - "Prequel"
 - /books/strange-days-shards/ - "Strange Days' Shards"
 - /books/cobwebs-experiments/ - "Cobweb's Experiments"
+- /books/tunnel-vision/ - "Between the tunnel and the train"
 - /books/lengthies/ - "Lengthies" (longer poems)
 
 ## Content Format
