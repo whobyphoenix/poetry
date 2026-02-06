@@ -1,6 +1,5 @@
 ---
 authors: phoenix
-books: tunnel-vision
 text: |
    Так странно знать наверняка.
    Знать цель, и что она недостижима.

@@ -1,5 +1,4 @@
 ---
-poem_title: "Loosing the eternal horses from the dens of night."
 authors: phoenix
 books: tunnel-vision
 text: |

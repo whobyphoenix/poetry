@@ -1,6 +1,5 @@
 ---
 authors: phoenix
-books: tunnel-vision
 text: |
    It is like living with a White Hole in your chest.
    And it's almost unbearable.

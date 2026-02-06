@@ -10,11 +10,11 @@ text: |
    To be with you.
    And even more -
    To be yours.
-   Only.
+   Forever and ever yours only.
    This bit is somehow so exciting,
    My future anything.
    And for everyone to envy you...
    And to call you a lucky bastard or something...
 commentary: |
-   Maybe they do envy you, and did, and rained on our parade making us doubt each other while a single kiss could've resolved all of it.
+   You poor man... Got yourself into this much trouble...
 ---

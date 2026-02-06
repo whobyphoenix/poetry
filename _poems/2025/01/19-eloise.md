@@ -12,6 +12,6 @@ text: |
    Than an entry
    In a not-so-secret diary...
    In hindsight,
-   Praises of your excellence
+   Praises of your excellency
    Could've been more precise..."
 ---
