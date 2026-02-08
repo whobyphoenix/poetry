@@ -350,14 +350,14 @@ h2.poem-title {
   font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   color: var(--text-light);
-  margin-left: 0.75rem;
+  margin-right: 0.5rem;
 }
 
 .books-list .download-link {
   font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   color: var(--text-light);
-  margin-left: 0.75rem;
+  margin-right: 0.5rem;
 }
 
 .books-list .download-link:hover {

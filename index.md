@@ -88,9 +88,9 @@ layout: default
     {% for book in sorted_books %}
     {% assign book_name = book.path | split: '/' | last | split: '.' | first %}
     <li>
-      <a href="{{ book.url | relative_url }}">{{ book.title }}</a>
       <span class="book-date">{{ book.date | date: "%B %-d, %Y" }}</span>
-      <a href="{{ '/downloads/' | relative_url }}{{ book_name }}.epub" class="download-link">↓ epub</a>
+      <a href="{{ '/downloads/' | relative_url }}{{ book_name }}.epub" class="download-link" title="Download e-pub">↓</a>
+      <a href="{{ book.url | relative_url }}">{{ book.title }}</a>
     </li>
     {% endfor %}
   </ul>
