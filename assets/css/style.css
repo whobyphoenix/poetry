@@ -339,25 +339,29 @@ h2.poem-title {
 }
 
 .books-list {
-  list-style: none;
+  border-collapse: collapse;
 }
 
-.books-list li {
-  padding: 0.5rem 0;
+.books-list td {
+  padding: 0.4rem 0;
 }
 
 .books-list .book-date {
   font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   color: var(--text-light);
-  margin-right: 0.5rem;
+  white-space: nowrap;
+  padding-right: 0.5rem;
+}
+
+.books-list .download-cell {
+  padding-right: 0.5rem;
 }
 
 .books-list .download-link {
   font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   color: var(--text-light);
-  margin-right: 0.5rem;
 }
 
 .books-list .download-link:hover {

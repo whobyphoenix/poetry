@@ -83,15 +83,15 @@ layout: default
 
 <section id="books" class="books-section">
   <h2>Books</h2>
-  <ul class="books-list">
+  <table class="books-list">
     {% assign sorted_books = site.books | sort: "date" | reverse %}
     {% for book in sorted_books %}
     {% assign book_name = book.path | split: '/' | last | split: '.' | first %}
-    <li>
-      <span class="book-date">{{ book.date | date: "%B %-d, %Y" }}</span>
-      <a href="{{ '/downloads/' | relative_url }}{{ book_name }}.epub" class="download-link" title="Download e-pub">↓</a>
-      <a href="{{ book.url | relative_url }}">{{ book.title }}</a>
-    </li>
+    <tr>
+      <td class="book-date">{{ book.date | date: "%B %-d, %Y" }}</td>
+      <td class="download-cell"><a href="{{ '/downloads/' | relative_url }}{{ book_name }}.epub" class="download-link" title="Download e-pub">↓</a></td>
+      <td><a href="{{ book.url | relative_url }}">{{ book.title }}</a></td>
+    </tr>
     {% endfor %}
-  </ul>
+  </table>
 </section>
