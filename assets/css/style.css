@@ -344,6 +344,7 @@ h2.poem-title {
 
 .books-list td {
   padding: 0.4rem 0;
+  white-space: nowrap;
 }
 
 .books-list .book-date {
