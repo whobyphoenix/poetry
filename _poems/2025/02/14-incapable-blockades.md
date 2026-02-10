@@ -1,5 +1,4 @@
 ---
-poem_title: "Кажется, это опять день, когда я могу связно думать, только пока записываю"
 authors: phoenix
 books: lucky-or-brave
 text: |
@@ -15,11 +14,11 @@ text: |
    for the lie that they're incapable,
    that one person's will is for naught,
    when every page in history books shows
-   that it's exactly what
+   that this is exactly what
    always happens:
    humanity is steered by individuals;
    the grey mass of mundane NPCs
    is not even a counterbalance -
    they simply follow in herds,
-   they follow us.
+   they follow dreamers.
 ---
