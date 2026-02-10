@@ -5,9 +5,8 @@ text: |
    Oh, Baby Blue,
    I think, by now you know
    That I'm owed.
-   One or two.
+   Two or four.
    Decades, not nights.
-   Or better yet - centuries.
    That's right.
    You better live a very healthy life...
 ---
