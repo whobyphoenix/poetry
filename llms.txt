@@ -29,6 +29,7 @@ Poetry collections available on this site:
 - /books/strange-days-shards/ - "Strange Days' Shards"
 - /books/cobwebs-experiments/ - "Cobweb's Experiments"
 - /books/tunnel-vision/ - "Between the tunnel and the train"
+- /books/lucky-or-brave/ - "Du brauchst keine angst zu haben"
 - /books/lengthies/ - "Lengthies" (longer poems)
 
 ## Content Format
