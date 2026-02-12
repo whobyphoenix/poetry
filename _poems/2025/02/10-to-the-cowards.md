@@ -1,5 +1,5 @@
 ---
-poem_title: "К вопросу о моральных дилеммах."
+poem_title: "Трусам."
 authors: phoenix
 books: lucky-or-brave
 text: |
