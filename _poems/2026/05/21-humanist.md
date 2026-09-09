@@ -1,6 +1,5 @@
 ---
 authors: phoenix
-books: lengthies
 text: |
    No, I’m not a patriot - I’m a humanist: humanity first.
    Humanity would be better off if Russia were to go free - in accordance with Navalny’s vision.

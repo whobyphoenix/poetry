@@ -1,6 +1,5 @@
 ---
 authors: phoenix
-books: lengthies
 text: |
    Война
    не кончится
