@@ -32,6 +32,7 @@ Poetry collections available on this site:
 - /books/lucky-or-brave/ - "Du brauchst keine angst zu haben"
 - /books/lengthies/ - "Lengthies" (longer poems)
 - /books/sine-quem-non/ - "Sine quem non"
+- /books/las-agujas/ - "Las agujas"
 
 ## Content Format
 
