@@ -1,6 +1,6 @@
 # Phoenix's Poetry Archive
 
-> A poetry website, most are by Phoenix (Natalia Pavlova)
+> A poetry website, by Phoenix
 
 This is a minimalist poetry archive containing original poems organized into books. The site is built with Jekyll and hosted on GitHub Pages.
 
