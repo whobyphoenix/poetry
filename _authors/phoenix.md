@@ -1,4 +1,4 @@
 ---
 name: "Phoenix"
-link: "https://www.instagram.com/whobyphoenix/"
+link: "https://bsky.app/profile/whobyphoenix.bsky.social"
 ---
