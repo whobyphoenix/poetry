@@ -1,4 +1,4 @@
-# Natalia Pavlova's Poetry Archive
+# Phoenix's Poetry Archive
 
 > A poetry website, most are by Phoenix (Natalia Pavlova)
 
@@ -51,7 +51,7 @@ To read all poems in a simple format:
 
 ## Authors
 
-Phoenix (Natalia Pavlova) - https://bsky.app/profile/whobyphoenix.com
+Phoenix - https://bsky.app/profile/whobyphoenix.com
 
 ## Technical Details
 
