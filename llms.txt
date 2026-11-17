@@ -51,7 +51,7 @@ To read all poems in a simple format:
 
 ## Authors
 
-Phoenix - https://bsky.app/profile/whobyphoenix.com
+Phoenix - https://bsky.app/profile/whobyphoenix.bsky.social
 
 ## Technical Details
 
