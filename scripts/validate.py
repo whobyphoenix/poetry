@@ -6,34 +6,44 @@ Authors: name must be defined. Only known fields: name, link.
 Books: title, author, and date must have valid values. Only known fields:
        title, author, date, default_poem_title, cover.
 Poems (published only): books, authors, and text must have valid values.
-       Only known fields: poem_title, authors, books, date_display, text, commentary.
+Poems (all, drafts included): only known fields: poem_title, authors, books,
+       date_display, images, text, commentary. images must be a comma-separated
+       list of bare file names, each listed once, each a file in
+       _illustrations/YYYY/MM/, the folder matching the poem's own _poems/YYYY/MM/.
 """
 
 import re
 import sys
+import unicodedata
 import yaml
+from collections import Counter
 from pathlib import Path
 
 
 AUTHOR_FIELDS = {'name', 'link'}
 BOOK_FIELDS = {'title', 'author', 'date', 'default_poem_title', 'cover'}
-POEM_FIELDS = {'poem_title', 'authors', 'books', 'date_display', 'text', 'commentary'}
+POEM_FIELDS = {'poem_title', 'authors', 'books', 'date_display', 'images', 'text', 'commentary'}
+
+# Front matter ends at the first line that is exactly '---' (or '...'), as in Jekyll.
+# Splitting on the first '---' anywhere in the file would cut a poem whose text contains '---'.
+FRONTMATTER = re.compile(r'\A---[ \t]*\r?\n(.*?)^(?:---|\.\.\.)[ \t]*\r?$', re.S | re.M)
+YEAR = re.compile(r'[0-9]{4}')
+MONTH = re.compile(r'[0-9]{2}')
 
 
 def parse_frontmatter(content):
     """Extract YAML frontmatter from markdown file."""
-    if not content.startswith('---'):
-        return None
-
-    parts = content.split('---', 2)
-    if len(parts) < 3:
+    m = FRONTMATTER.match(content)
+    if not m:
         return None
 
     try:
-        frontmatter = yaml.safe_load(parts[1])
-        return frontmatter if frontmatter else {}
-    except yaml.YAMLError as e:
+        frontmatter = yaml.safe_load(m.group(1))
+    except yaml.YAMLError:
         return None
+    if not frontmatter:
+        return {}
+    return frontmatter if isinstance(frontmatter, dict) else None
 
 
 def check_unknown_fields(meta, allowed, file_label):
@@ -132,13 +142,79 @@ def validate_books(books_dir, known_authors):
     return book_ids, errors
 
 
-def validate_poems(poems_dir, known_authors, known_books):
-    """Validate published poem files. Returns errors."""
+def nfc(name):
+    return unicodedata.normalize('NFC', name)
+
+
+def files_in(folder, cache):
+    """Names (NFC) of the regular files in folder, or None if it is not a directory."""
+    if folder not in cache:
+        cache[folder] = {nfc(p.name) for p in folder.iterdir() if p.is_file()} if folder.is_dir() else None
+    return cache[folder]
+
+
+def validate_images(meta, poem_file, poems_dir, illustrations_dir, cache):
+    """Check the images field of one poem file, draft or published.
+
+    images is a comma-separated list of bare file names, each listed once; each must be a
+    file in _illustrations/YYYY/MM/, where YYYY/MM is the poem's own folder under _poems/.
+    Names are compared with the folder's actual listing, case included, so the answer is
+    the same on a case-insensitive disk (macOS) and on the build machine (Linux).
+    Returns (errors, number of names listed).
+    """
+    if 'images' not in meta:
+        return [], 0
+    rel_path = poem_file.relative_to(poems_dir.parent)
+    value = meta['images']
+    if not isinstance(value, str) or not value.strip():
+        return [f"{rel_path}: 'images' must be a comma-separated list of file names, got: {value!r}"], 0
+
     errors = []
+    names = [nfc(n.strip()) for n in value.split(',')]
+    if '' in names:
+        errors.append(f"{rel_path}: 'images' has an empty entry: {value!r}")
+    names = [n for n in names if n]
+    counts = Counter(names)
+    for name, count in counts.items():
+        if count > 1:
+            errors.append(f"{rel_path}: image '{name}' is listed {count} times")
+    bare = []
+    for name in counts:
+        if '/' in name or '\\' in name:
+            errors.append(f"{rel_path}: image '{name}' must be a bare file name, without a folder")
+        else:
+            bare.append(name)
+
+    parts = poem_file.relative_to(poems_dir).parts
+    if len(parts) != 3 or not YEAR.fullmatch(parts[0]) or not MONTH.fullmatch(parts[1]):
+        errors.append(f"{rel_path}: has 'images' but is not at _poems/YYYY/MM/, so its illustrations folder is unknown")
+        return errors, len(names)
+    folder = illustrations_dir / parts[0] / parts[1]
+    label = f"{illustrations_dir.name}/{parts[0]}/{parts[1]}/"
+    present = files_in(folder, cache)
+    for name in bare:
+        if present is None:
+            errors.append(f"{rel_path}: image '{name}' not found: folder {label} does not exist")
+        elif name not in present:
+            near = sorted(p for p in present if p.casefold() == name.casefold())
+            hint = f" (there is {', '.join(near)}: the case differs)" if near else ''
+            errors.append(f"{rel_path}: image '{name}' not found in {label}{hint}")
+    return errors, len(names)
+
+
+def validate_poems(poems_dir, illustrations_dir, known_authors, known_books):
+    """Validate poem files. Returns (errors, number of image names listed).
+
+    Every poem file, drafts included: known fields only, and the images check.
+    Published poems (non-empty books) also: mandatory fields and known references.
+    """
+    errors = []
+    image_names = 0
+    folders = {}
 
     if not poems_dir.exists():
         errors.append("Directory _poems/ does not exist")
-        return errors
+        return errors, image_names
 
     for poem_file in sorted(poems_dir.rglob('*.md')):
         rel_path = poem_file.relative_to(poems_dir.parent)
@@ -150,6 +226,11 @@ def validate_poems(poems_dir, known_authors, known_books):
             continue
 
         errors.extend(check_unknown_fields(meta, POEM_FIELDS, str(rel_path)))
+
+        # images: checked on every poem file, drafts included
+        image_errors, n = validate_images(meta, poem_file, poems_dir, illustrations_dir, folders)
+        errors.extend(image_errors)
+        image_names += n
 
         # Check if published (has books field)
         books_str = meta.get('books', '')
@@ -185,7 +266,7 @@ def validate_poems(poems_dir, known_authors, known_books):
         if not isinstance(text, str) or not text.strip():
             errors.append(f"{rel_path}: missing or empty 'text'")
 
-    return errors
+    return errors, image_names
 
 
 def main():
@@ -201,8 +282,10 @@ def main():
     known_books, book_errors = validate_books(root / '_books', known_authors)
     all_errors.extend(book_errors)
 
-    # 3. Validate published poems (depends on known authors and books)
-    poem_errors = validate_poems(root / '_poems', known_authors, known_books)
+    # 3. Validate poems: all of them for fields and images, published ones fully
+    #    (depends on known authors and books)
+    poem_errors, image_names = validate_poems(root / '_poems', root / '_illustrations',
+                                              known_authors, known_books)
     all_errors.extend(poem_errors)
 
     # Report
@@ -213,7 +296,8 @@ def main():
         sys.exit(1)
     else:
         print("Validation passed.")
-        print(f"  {len(known_authors)} author(s), {len(known_books)} book(s)")
+        print(f"  {len(known_authors)} author(s), {len(known_books)} book(s), "
+              f"{image_names} image name(s) in poem files")
         sys.exit(0)
 
 

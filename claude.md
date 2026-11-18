@@ -27,7 +27,8 @@ Poems are stored in YAML `text:` fields and rendered as literal text to preserve
 ## Repository Structure
 
 ```
-_poems/YYYY/MM/DD-slug.md    # Poems organized by date
+_poems/YYYY/MM/DD-slug.md    # Poems organized by date (DD-HHmm-slug.md is also acceptable)
+_illustrations/YYYY/MM/       # Poem illustrations listed in `images:`; not served by the site
 _books/*.md                   # Book definitions
 _authors/*.md                 # Author definitions
 _layouts/
@@ -38,7 +39,6 @@ assets/
   images/
     covers/                   # Book cover images
     favicon/                  # Favicon files (multiple sizes/formats)
-    illustrations/            # Poem illustrations (future)
 index.md                      # Homepage (latest poem + book list)
 poems/index.md                # All poems page (chronological listing)
 404.html                      # Custom 404 error page
@@ -61,6 +61,7 @@ poem_title: "Optional Title"      # If omitted, uses book's default_poem_title
 authors: phoenix                  # Comma-separated if multiple: "phoenix, claude"
 books: drowning-admiration        # Required to publish; omit for drafts
 date_display: "2018"              # Optional override (e.g., for uncertain dates)
+images: 14-0305-1.jpg             # Optional; file names in _illustrations/YYYY/MM/ (see Illustrations)
 text: |
   Poem text goes here.
   Line breaks are preserved.
@@ -72,10 +73,32 @@ commentary: |                     # Optional footnote-style text after poem
 ```
 
 **Key conventions:**
-- Filename pattern: `DD-slug.md` where DD is day of month
-- Path provides date: `_poems/2024/07/15-example.md` → July 15, 2024
+- Filename pattern: `DD-slug.md` or `DD-HHmm-slug.md` where DD is day of month
+- If `DD-HHmm-slug.md` then `HHmm` is assumed to be the UTC time of the writing, which keeps names unique and in writing order within a day. The templates and `generate_epubs.py` read only the leading day number, so both patterns work.
+- Path provides date: `_poems/2024/07/15-example.md` → July 15, 2024 - the date of writing; `HHmm` (if known) is the writing time; in UTC.
 - Poems without `books:` field are drafts (not published anywhere)
 - `poem_title` (not `title`) — avoids Jekyll's auto-generation from filename
+
+## Illustrations
+
+A poem lists its illustrations in the optional `images:` field: bare file names, comma-separated, in display order, same style as `authors:` and `books:`. The field goes just before `text:`.
+
+```yaml
+# _poems/2026/11/14-0305-example.md
+---
+authors: phoenix
+images: 14-0305-1.jpg, 14-0305-2.jpg
+text: |
+  Poem text.
+---
+```
+
+- **The folder mirrors the poem's folder:** the files live in `_illustrations/YYYY/MM/`, where `YYYY/MM` is the poem's own folder under `_poems/` (here `_illustrations/2026/11/`). The field holds names only, never paths.
+- **Moving a poem to another month means moving its images with it;** the build fails otherwise.
+- **Names:** `DD-HHmm-N.jpg` for images: UTC day and time of the poem's writing, `N` counting the images across the poem.
+- **Not shown anywhere yet:** Jekyll does not copy underscore folders that are not collections, so the site does not serve these files, and neither the templates nor `generate_epubs.py` read `images:`. Showing illustrations on book pages and in EPUBs is a later project.
+- **What is committed:** downscaled copies (long edge 1600 px, JPEG) with no location metadata. The originals are kept outside the repo.
+- **Rights:** images are outside the poems' licence (see `README.md`).
 
 ## Book File Format
 
@@ -185,7 +208,14 @@ All favicon tags are included in `_layouts/default.html` in the `<head>` section
 | Books | `title`, `author`, `date` | `author` must reference a known `_authors/` file; `date` must be valid YYYY-MM-DD |
 | Poems (published) | `authors`, `books`, `text` | `authors` and `books` must reference known `_authors/` and `_books/` files |
 
-Poems without `books` are drafts — no validation is applied to them.
+Poems without `books` are drafts. The mandatory-field checks above are skipped for them, but the unknown-field check and the `images` check below apply to every poem file.
+
+**Illustrations (`images`, every poem file, drafts included):**
+- The value is a non-empty, comma-separated list of bare file names (no `/`), with no empty entry and no name listed twice.
+- Every name is a file in `_illustrations/YYYY/MM/`, the folder matching the poem's own `_poems/YYYY/MM/`. A poem with `images` must therefore sit at `_poems/YYYY/MM/`.
+- Names are compared with the folder's listing, case included, so the check gives the same answer on macOS (whose disk ignores case) and on the Linux build machine.
+
+**Front matter parsing:** front matter ends at the first line that is exactly `---` (or `...`), as in Jekyll. A `---` inside a poem's text does not end it.
 
 **Unknown field detection:** Only explicitly allowed fields are permitted in frontmatter. Any unrecognized field name causes a build failure.
 
@@ -193,7 +223,7 @@ Poems without `books` are drafts — no validation is applied to them.
 |---|---|
 | Authors | `name`, `link` |
 | Books | `title`, `author`, `date`, `default_poem_title`, `cover` |
-| Poems | `poem_title`, `authors`, `books`, `date_display`, `text`, `commentary` |
+| Poems | `poem_title`, `authors`, `books`, `date_display`, `images`, `text`, `commentary` |
 
 **Important:** When adding new features that introduce new frontmatter fields, the allowed-fields lists in `scripts/validate.py` must be updated, and appropriate consistency checks for the new fields must be added.
 
@@ -256,12 +286,16 @@ cover: new-book-cover.jpg  # Optional
 3. Recommended specs: 1600×2400px (2:3 ratio), JPEG, under 500KB
 4. Cover displays on web book page and in EPUB
 
+**Add an illustration to a poem:**
+1. Put the image in `_illustrations/YYYY/MM/`, with the same `YYYY/MM` as the poem's file
+2. Add its file name to the poem's `images:` field (comma-separated if there are several)
+
 **Add a new author:**
 ```yaml
 # _authors/claude.md
 ---
 name: "Claude"
-link: "https://claude.ai/"
+link: "https://claude.com/"
 ---
 ```
 
@@ -284,6 +318,7 @@ link: "https://claude.ai/"
 9. **No filters needed:** Templates use `{{ poem.text }}` directly—CSS handles whitespace
 10. **EPUB vs Web:** Both render identically, but EPUBs use `&nbsp;` entities for leading spaces (better reader compatibility)
 11. **Commentary styling differs:** Web uses CSS border/spacing; EPUB wraps commentary in `()` with empty line before it (plain text formatting is more reliable across EPUB readers than CSS)
+12. **Images follow their poem:** moving a poem file to another month means moving its images to the matching `_illustrations/YYYY/MM/` folder; `images:` holds bare names, resolved through the poem's own path
 
 ## Tech Stack Versions
 
@@ -345,3 +380,9 @@ link: "https://claude.ai/"
 - Renamed "Poems." book to "Lengthies." to avoid confusion with the new /poems/ page
 - Fixed `.poem-footer` inheriting styles from global `footer` rule (border, padding, centering)
 - Tightened spacing between poem text, commentary, and "In: books" footer
+
+**Illustrations:**
+- Added the optional `images:` poem field: bare file names of files in `_illustrations/YYYY/MM/`, the folder mirroring the poem's own
+- `_illustrations/` replaces the planned `assets/images/illustrations/`: as an underscore folder it is not copied into the site, so the images are kept in the repo without being published
+- `scripts/validate.py` checks `images` on every poem file, drafts included, and now finds the end of the front matter the way Jekyll does (a line that is exactly `---`), so a `---` inside a poem's text no longer breaks validation
+- Added `_authors/claude.md`, for poems written by or with Claude

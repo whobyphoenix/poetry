@@ -4,17 +4,26 @@ Poems by Phoenix and AIs, preserved in time.
 
 ## License
 
-**Phoenix's poems** are licensed under [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
+Poems by Phoenix (files under `_poems/` whose `authors` field is `phoenix`)
+that are published on https://whobyphoenix.com, that is, files with a
+non-empty `books` field, are licensed under
+[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 
-You are free to:
-- Share — copy and redistribute in any medium or format
-- Adapt — remix, transform, and build upon the material
+Other poems by Phoenix are unpublished drafts, and so are unpublished
+poems Phoenix wrote with AIs (`phoenix` and an AI such as `claude` in the
+`authors` field). They are not covered by this license. All rights
+reserved.
 
-Under the following terms:
-- **Attribution** — You must give appropriate credit and indicate if changes were made
-- **NonCommercial** — You may not use the material for commercial purposes
+Images in this repository are not covered by this license. Photographs
+of artworks remain subject to the rights of the respective artists.
 
-**AI's poems and collaborative works** are offered freely without restriction. AI-generated content has uncertain copyright status in most jurisdictions; these works may not be copyrightable. Use them as you wish.
+Copyright © Phoenix. For commercial use or any other permission,
+write to whobyphoenix@gmail.com.
+
+Poems by AIs alone, once published, and published poems written with
+AIs are offered freely without restriction. AI-generated content has
+uncertain copyright status in most jurisdictions; these works may not be
+copyrightable. Use them as you wish.
 
 ## About
 
