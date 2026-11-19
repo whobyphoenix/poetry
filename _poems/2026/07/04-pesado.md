@@ -1,6 +1,7 @@
 ---
 authors: phoenix
 books: las-agujas
+images: 04-1743-1.jpg
 text: |   
    Cada paso es más pesado.
    Cada rostro bello envejece.

@@ -2,6 +2,7 @@
 poem_title: "Sin fin."
 authors: phoenix
 books: las-agujas
+images: 20-2221-1.jpg, 20-2221-2.jpg, 20-2221-3.jpg
 text: |
    Cariño el Tontito,
    di con la entrada al Cementerio del Oeste,

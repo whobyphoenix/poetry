@@ -2,6 +2,7 @@
 poem_title: "Pixilated."
 authors: phoenix
 books: las-agujas
+images: 25-2338-1.jpg, 25-2338-2.jpg
 text: |
    Your craic and geg October gag
    turned out scundered,

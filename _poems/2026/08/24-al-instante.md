@@ -2,6 +2,7 @@
 poem_title: "Al instante."
 authors: phoenix
 books: las-agujas
+images: 24-2353-1.jpg
 text: |
    Mi mirar con asombro
    escapa en un parpadeo.

@@ -1,6 +1,7 @@
 ---
 authors: phoenix
 books: las-agujas
+images: 04-1657-1.jpg
 text: |   
    Todos los tiempos los años,
    los días, las horas.

@@ -2,6 +2,7 @@
 poem_title: "Post-singularidad."
 authors: phoenix
 books: las-agujas
+images: 25-2226-1.jpg
 text: |
    «- Tranquila… Cálmate…»
    «- ¿Por qué quieres que me duerma?»
