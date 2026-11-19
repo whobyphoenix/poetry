@@ -1,0 +1,13 @@
+---
+authors: phoenix
+text: |
+   It must be nice
+   to have a real weapon sometimes…
+   Like a bow unbendable by others…
+   And enough arrows
+   to shoot them down…
+   All hundred and eight of them,
+   or however many
+   siege you these days,
+   darling…
+---
