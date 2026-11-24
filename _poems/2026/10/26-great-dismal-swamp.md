@@ -1,6 +1,6 @@
 ---
 authors: phoenix
-books: sine-quem-non
+books: noir-a-la-russe
 text: |   
    Mr. Crêpekin,
    the princekin,
